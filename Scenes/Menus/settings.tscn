@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlgqgv0hcr32t"]
+
+[ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
+[ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="2_velxo"]
+[ext_resource type="PackedScene" uid="uid://bx6sjl62aribv" path="res://Scenes/Menus/volume_slider.tscn" id="3_73vph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf2ag"]
+bg_color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="SettingsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf2ag")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_right = 0.823
+anchor_bottom = 1.0
+offset_left = 0.095993
+offset_right = -0.0960083
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_sgfbq")
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("settings_node")]
+layout_mode = 2
+text = "Back"
+script = ExtResource("2_velxo")
+settings_node = NodePath("../..")
+
+[node name="MusicVolume" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MasterVolume" type="Label" parent="VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
+layout_mode = 2
+volume_type = "Master"
+
+[node name="MusicVolume" type="Label" parent="VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
+layout_mode = 2
+volume_type = "Music"
+
+[node name="SFXVolume" type="Label" parent="VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
+layout_mode = 2
+volume_type = "SFX"
+
+[node name="UIVolume" type="Label" parent="VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "UI Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
+layout_mode = 2
+volume_type = "UI"

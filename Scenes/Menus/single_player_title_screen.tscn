@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://cywnd0r8nh0v5"]
+
+[ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
+[ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="2_ha7ql"]
+[ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
+[ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
+
+[node name="SinglePlayerTitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_right = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_w0jkv")
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("2_p6j21")
+next_scene = "res://Scenes/Game/main.tscn"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+script = ExtResource("2_ha7ql")
+settings_scene_path = "res://Scenes/Menus/settings.tscn"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("3_yde8j")
