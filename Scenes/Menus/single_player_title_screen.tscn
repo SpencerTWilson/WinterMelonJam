@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cywnd0r8nh0v5"]
+[gd_scene load_steps=6 format=3 uid="uid://cywnd0r8nh0v5"]
 
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="2_ha7ql"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
+[ext_resource type="Script" path="res://addons/Better Rich Text Labels/better_rich_text_label.gd" id="2_w768j"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
 
 [node name="SinglePlayerTitleScreen" type="Control"]
@@ -23,22 +24,25 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.248
+anchor_right = 0.752
 anchor_bottom = 1.0
-offset_left = -290.0
-offset_right = 290.0
+offset_left = 0.303986
+offset_right = -0.304016
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_w0jkv")
-text = "Game Title"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/normal_font_size = 99
+bbcode_enabled = true
+text = "[center]Game Title[/center]"
+fit_content = true
+script = ExtResource("2_w768j")
+base_size = 5.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

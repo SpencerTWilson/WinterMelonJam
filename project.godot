@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 OptionsManager="*res://Scenes/Autoloads/options_manager.gd"
 AudioManager="*res://Scenes/Autoloads/audio_manager.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Better Rich Text Labels/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
