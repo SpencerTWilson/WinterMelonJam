@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb3pshabqtp4x"]
+
+[ext_resource type="Texture2D" uid="uid://boexsloksphr2" path="res://icon.svg" id="1_stfju"]
+[ext_resource type="Script" path="res://Scenes/Game/Units/unit.gd" id="2_qfc7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i83t"]
+radius = 64.0
+
+[node name="Unit" type="Sprite2D"]
+modulate = Color(2.40654e-08, 0.541231, 0.188576, 1)
+texture = ExtResource("1_stfju")
+script = ExtResource("2_qfc7a")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_2i83t")

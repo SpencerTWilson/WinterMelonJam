@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 OptionsManager="*res://Scenes/Autoloads/options_manager.gd"
 AudioManager="*res://Scenes/Autoloads/audio_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Better Rich Text Labels/plugin.cfg")

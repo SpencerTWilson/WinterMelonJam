@@ -1,18 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cum2qxysr7tp0"]
 
-[ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_ejh6d"]
+[ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 
 [node name="Main" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="BlueCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(75, 400)
+blue_team = true
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_ejh6d")
-text = "Game Goes Here!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="RedCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(1070, 399)
