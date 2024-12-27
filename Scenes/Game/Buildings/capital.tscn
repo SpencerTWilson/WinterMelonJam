@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://j7g4fkbkniyr"]
+[gd_scene load_steps=3 format=3 uid="uid://j7g4fkbkniyr"]
 
-[ext_resource type="Texture2D" uid="uid://boexsloksphr2" path="res://icon.svg" id="1_ub4aj"]
 [ext_resource type="Script" path="res://Scenes/Game/Buildings/capital.gd" id="2_uun3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyeou"]
 size = Vector2(126, 126)
 
-[node name="Capital" type="Sprite2D"]
-texture = ExtResource("1_ub4aj")
+[node name="Capital" type="StaticBody2D"]
 script = ExtResource("2_uun3s")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="Sprite2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pyeou")

@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 
 @export var blue_team: bool = false
 
