@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://j7g4fkbkniyr"]
 
-[ext_resource type="Texture2D" uid="uid://boexsloksphr2" path="res://icon.svg" id="2_0shxr"]
 [ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="2_k0j08"]
+[ext_resource type="Texture2D" uid="uid://drdcf4n2kax5v" path="res://Assets/Sprites/KennyBattleTiles/tile_0015.png" id="2_k4knp"]
 [ext_resource type="Script" path="res://Scenes/Game/Buildings/capital.gd" id="2_uun3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyeou"]
@@ -12,13 +12,13 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.286885, 0.762295)
 colors = PackedColorArray(0.710936, 0, 0.0782622, 1, 0.172439, 0.516813, 0.223619, 1, 0.22, 1, 0.324, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lq0w1"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_op5nf"]
 gradient = SubResource("Gradient_2avh1")
 
 [sub_resource type="Gradient" id="Gradient_txr2w"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2oi2"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_22xof"]
 gradient = SubResource("Gradient_txr2w")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8nnqw"]
@@ -30,26 +30,28 @@ shader_parameter/margin = Vector2(0.1, 0.1)
 shader_parameter/shear_angle = -0.043
 shader_parameter/use_value_gradient = true
 shader_parameter/invert = false
-shader_parameter/gradient_x = SubResource("GradientTexture1D_lq0w1")
-shader_parameter/gradient_y = SubResource("GradientTexture1D_s2oi2")
+shader_parameter/gradient_x = SubResource("GradientTexture1D_op5nf")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_22xof")
 
-[sub_resource type="Gradient" id="Gradient_7r6rg"]
+[sub_resource type="Gradient" id="Gradient_4likr"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xthu5"]
-gradient = SubResource("Gradient_7r6rg")
+gradient = SubResource("Gradient_4likr")
 
-[node name="Capital" type="StaticBody2D" node_paths=PackedStringArray("healthbar")]
+[node name="Capital" type="CharacterBody2D" node_paths=PackedStringArray("healthbar", "primary_sprite")]
 script = ExtResource("2_uun3s")
-healthbar = NodePath("Sprite2D")
+healthbar = NodePath("HealthBar")
+primary_sprite = NodePath("Sprite")
 
-[node name="StaticBody2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0shxr")
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(7.875, 7.875)
+texture = ExtResource("2_k4knp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pyeou")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HealthBar" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8nnqw")
 position = Vector2(0, -82)
-scale = Vector2(0.734375, 26)
+scale = Vector2(0.5, 12)
 texture = SubResource("GradientTexture1D_xthu5")

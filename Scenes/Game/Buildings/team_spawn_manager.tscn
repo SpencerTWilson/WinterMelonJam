@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://462i3n4k2qm"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Buildings/team_spawn_manager.gd" id="1_01ylh"]
+
+[node name="TeamSpawnManager" type="Node2D"]
+script = ExtResource("1_01ylh")

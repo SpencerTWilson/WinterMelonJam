@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://bg1qyotc43evj"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Units/melee_soldier.gd" id="1_yur8y"]
+[ext_resource type="Texture2D" uid="uid://f2hk5jgaa7x6" path="res://Assets/Sprites/KennyBattleTiles/tile_0106.png" id="2_xxdtv"]
+[ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="3_aoyc3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i83t"]
+radius = 18.0
+
+[sub_resource type="Gradient" id="Gradient_n7jwq"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.286885, 0.762295)
+colors = PackedColorArray(0.710936, 0, 0.0782622, 1, 0.172439, 0.516813, 0.223619, 1, 0.22, 1, 0.324, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lq0w1"]
+gradient = SubResource("Gradient_n7jwq")
+
+[sub_resource type="Gradient" id="Gradient_3horn"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2oi2"]
+gradient = SubResource("Gradient_3horn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykyns"]
+shader = ExtResource("3_aoyc3")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 4
+shader_parameter/margin = Vector2(0.1, 0.1)
+shader_parameter/shear_angle = -0.043
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_lq0w1")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_s2oi2")
+
+[sub_resource type="Gradient" id="Gradient_7r6rg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5o5jx"]
+gradient = SubResource("Gradient_7r6rg")
+
+[node name="MeleeSoldier" type="CharacterBody2D" node_paths=PackedStringArray("attack_timer", "healthbar", "primary_sprite")]
+collision_mask = 2
+script = ExtResource("1_yur8y")
+attack_timer = NodePath("AttackTimer")
+attack_dmg = 10.0
+movement_speed = 25.0
+spawn_rate = 5.0
+healthbar = NodePath("HealthBar")
+primary_sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -17.33)
+scale = Vector2(2.25, 2.20875)
+texture = ExtResource("2_xxdtv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17.33)
+shape = SubResource("CircleShape2D_2i83t")
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ykyns")
+position = Vector2(0, -44)
+scale = Vector2(0.328125, 6)
+texture = SubResource("GradientTexture1D_5o5jx")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true

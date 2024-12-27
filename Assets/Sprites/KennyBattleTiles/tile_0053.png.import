@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86cy0qimwn0u"
-path="res://.godot/imported/icon.png-faf69d0a8ff25dad0a4e2f2a86c1b1b8.ctex"
+uid="uid://daglcnnws5wk4"
+path="res://.godot/imported/tile_0053.png-0454e26102c2faba461a6215e1595f48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/Better Rich Text Labels/icon.png"
-dest_files=["res://.godot/imported/icon.png-faf69d0a8ff25dad0a4e2f2a86c1b1b8.ctex"]
+source_file="res://Assets/Sprites/KennyBattleTiles/tile_0053.png"
+dest_files=["res://.godot/imported/tile_0053.png-0454e26102c2faba461a6215e1595f48.ctex"]
 
 [params]
 

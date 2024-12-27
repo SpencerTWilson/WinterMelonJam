@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cum2qxysr7tp0"]
+
+[ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
+[ext_resource type="PackedScene" uid="uid://462i3n4k2qm" path="res://Scenes/Game/Buildings/team_spawn_manager.tscn" id="2_2sdlk"]
+[ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="3_0y2yv"]
+
+[node name="Main" type="Node2D"]
+
+[node name="BlueCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(75, 400)
+collision_mask = 2
+blue_team = true
+
+[node name="TeamSpawnManager" parent="BlueCapital" instance=ExtResource("2_2sdlk")]
+blue_team = true
+
+[node name="RedCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(1070, 399)
+collision_layer = 2
+
+[node name="TeamSpawnManager" parent="RedCapital" instance=ExtResource("2_2sdlk")]
+
+[node name="GameManager" type="Node" parent="." groups=["GameManager"]]
+script = ExtResource("3_0y2yv")

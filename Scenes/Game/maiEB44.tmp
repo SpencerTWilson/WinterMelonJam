@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cum2qxysr7tp0"]
+
+[ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
+[ext_resource type="PackedScene" uid="uid://cb3pshabqtp4x" path="res://Scenes/Game/Units/unit.tscn" id="2_iev20"]
+
+[node name="Main" type="Node2D"]
+
+[node name="BlueCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(75, 400)
+collision_mask = 2
+blue_team = true
+
+[node name="RedCapital" parent="." instance=ExtResource("1_11a02")]
+position = Vector2(1070, 399)
+collision_layer = 2
+
+[node name="RedUnit" parent="." instance=ExtResource("2_iev20")]
+position = Vector2(936, 442)
+collision_layer = 2
+collision_mask = 1
+movement_speed = 35.0
+
+[node name="BlueUnit" parent="." instance=ExtResource("2_iev20")]
+position = Vector2(223, 436)
+movement_speed = 15.0
+blue_team = true

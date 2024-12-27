@@ -1,16 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb3pshabqtp4x"]
+[gd_scene load_steps=12 format=3 uid="uid://cb3pshabqtp4x"]
 
+[ext_resource type="Texture2D" uid="uid://boexsloksphr2" path="res://icon.svg" id="1_stfju"]
 [ext_resource type="Script" path="res://Scenes/Game/Units/unit.gd" id="2_qfc7a"]
+[ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="3_7daaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2i83t"]
-radius = 64.0
+radius = 18.0
 
-[node name="Unit" type="CharacterBody2D"]
+[sub_resource type="Gradient" id="Gradient_n7jwq"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.286885, 0.762295)
+colors = PackedColorArray(0.710936, 0, 0.0782622, 1, 0.172439, 0.516813, 0.223619, 1, 0.22, 1, 0.324, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lq0w1"]
+gradient = SubResource("Gradient_n7jwq")
+
+[sub_resource type="Gradient" id="Gradient_3horn"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2oi2"]
+gradient = SubResource("Gradient_3horn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykyns"]
+shader = ExtResource("3_7daaq")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 4
+shader_parameter/margin = Vector2(0.1, 0.1)
+shader_parameter/shear_angle = -0.043
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_lq0w1")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_s2oi2")
+
+[sub_resource type="Gradient" id="Gradient_7r6rg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5o5jx"]
+gradient = SubResource("Gradient_7r6rg")
+
+[node name="Unit" type="CharacterBody2D" node_paths=PackedStringArray("healthbar")]
 modulate = Color(2.40654e-08, 0.541231, 0.188576, 1)
 collision_mask = 2
 script = ExtResource("2_qfc7a")
+healthbar = NodePath("HealthBar")
 
-[node name="CharacterBody2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.265625, 0.265625)
+texture = ExtResource("1_stfju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2i83t")
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ykyns")
+position = Vector2(0, -26.67)
+scale = Vector2(0.328125, 6)
+texture = SubResource("GradientTexture1D_5o5jx")

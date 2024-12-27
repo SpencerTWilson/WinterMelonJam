@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=5 format=3 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
+[ext_resource type="PackedScene" uid="uid://462i3n4k2qm" path="res://Scenes/Game/Buildings/team_spawn_manager.tscn" id="2_2sdlk"]
+[ext_resource type="PackedScene" uid="uid://bg1qyotc43evj" path="res://Scenes/Game/Units/melee_soldier.tscn" id="2_5fy4v"]
+[ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="3_0y2yv"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,6 +12,19 @@ position = Vector2(75, 400)
 collision_mask = 2
 blue_team = true
 
+[node name="TeamSpawnManager" parent="BlueCapital" instance=ExtResource("2_2sdlk")]
+position = Vector2(0, 60)
+blue_team = true
+
 [node name="RedCapital" parent="." instance=ExtResource("1_11a02")]
-position = Vector2(1070, 399)
+position = Vector2(1070, 400)
 collision_layer = 2
+
+[node name="TeamSpawnManager" parent="RedCapital" instance=ExtResource("2_2sdlk")]
+position = Vector2(0, 60)
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager") groups=["GameManager"]]
+script = ExtResource("3_0y2yv")
+blue_team_spawn_manager = NodePath("../BlueCapital/TeamSpawnManager")
+red_team_spawn_manager = NodePath("../RedCapital/TeamSpawnManager")
+units = [ExtResource("2_5fy4v")]
