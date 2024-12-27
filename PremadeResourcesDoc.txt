@@ -5,4 +5,5 @@ The List of resources made outside the game jam being used are:
 		Audio Manager (Created by us)
 		Options Manager (Created by us)
 		HealthBar Shader (Created by us, added during jam)
-	...
+	Audio
+		Kenny's impact sounds
