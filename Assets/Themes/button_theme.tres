@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b4aavk7aafjd0"]
+
+[ext_resource type="FontFile" uid="uid://ciqnd3e8b2r4v" path="res://Assets/Fonts/Crang.ttf" id="1_14vwe"]
+
+[resource]
+default_font = ExtResource("1_14vwe")
+BoxContainer/constants/separation = 4

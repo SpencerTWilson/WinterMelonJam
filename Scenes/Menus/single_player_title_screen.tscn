@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cywnd0r8nh0v5"]
+[gd_scene load_steps=7 format=3 uid="uid://cywnd0r8nh0v5"]
 
+[ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sat6m"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="2_ha7ql"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sat6m")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -37,12 +39,12 @@ alignment = 1
 [node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_w0jkv")
-theme_override_font_sizes/normal_font_size = 67
+theme_override_font_sizes/normal_font_size = 79
 bbcode_enabled = true
-text = "[center]Game Title[/center]"
+text = "[center]Counter Strike[/center]"
 fit_content = true
 script = ExtResource("2_w768j")
-base_size = 5.0
+base_size = 4.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

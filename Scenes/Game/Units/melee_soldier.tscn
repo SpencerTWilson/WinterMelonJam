@@ -54,6 +54,7 @@ attack_timer = NodePath("AttackTimer")
 attack_dmg = 5.0
 attack_sounds = [ExtResource("2_lwqt2"), ExtResource("3_i2yjs"), ExtResource("4_ocule")]
 death_sounds = [ExtResource("5_32oi6"), ExtResource("6_kw75c"), ExtResource("7_vgoik")]
+value = 1
 movement_speed = 25.0
 spawn_rate = 5.0
 max_health = 10.0

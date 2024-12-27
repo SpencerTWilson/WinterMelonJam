@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://j7g4fkbkniyr"]
+[gd_scene load_steps=15 format=3 uid="uid://j7g4fkbkniyr"]
 
-[ext_resource type="Texture2D" uid="uid://cyqfg74moa4hj" path="res://Assets/Sprites/KennyBattleTiles/tile_0047.png" id="2_5v0dc"]
 [ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="2_k0j08"]
 [ext_resource type="Script" path="res://Scenes/Game/Buildings/capital.gd" id="2_uun3s"]
+[ext_resource type="Texture2D" uid="uid://dpjt8s38fgd5l" path="res://Assets/Sprites/KennyBattleTiles/tile_0012.png" id="2_yecss"]
 [ext_resource type="Script" path="res://Scenes/Game/team_sprite.gd" id="3_h3tg1"]
 [ext_resource type="Texture2D" uid="uid://dundgvespq1hv" path="res://Assets/Sprites/KennyBattleTiles/tile_0069.png" id="4_6myau"]
+[ext_resource type="Texture2D" uid="uid://cv8gmpb2o5abb" path="res://Assets/Sprites/KennyBattleTiles/tile_0048.png" id="4_jtysa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyeou"]
 size = Vector2(126, 126)
@@ -47,8 +48,9 @@ primary_sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(7.875, 7.875)
-texture = ExtResource("2_5v0dc")
+texture = ExtResource("2_yecss")
 script = ExtResource("3_h3tg1")
+blue_team_texture = ExtResource("4_jtysa")
 red_team_texture = ExtResource("4_6myau")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlgqgv0hcr32t"]
+[gd_scene load_steps=6 format=3 uid="uid://dlgqgv0hcr32t"]
 
+[ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sanry"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
 [ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="2_velxo"]
 [ext_resource type="PackedScene" uid="uid://bx6sjl62aribv" path="res://Scenes/Menus/volume_slider.tscn" id="3_73vph"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sanry")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
