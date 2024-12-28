@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 OptionsManager="*res://Scenes/Autoloads/options_manager.gd"
 AudioManager="*res://Scenes/Autoloads/audio_manager.gd"
+SlotManager="*res://Scenes/Autoloads/slot_manager.gd"
 
 [display]
 
@@ -26,13 +27,21 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Better Rich Text Labels/plugin.cfg", "res://addons/BetterRichTextLabels/plugin.cfg")
+enabled=PackedStringArray("res://addons/BetterRichTextLabels/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Assets/": "red",
 "res://Scenes/": "yellow"
+}
+
+[input]
+
+select={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 
 [rendering]

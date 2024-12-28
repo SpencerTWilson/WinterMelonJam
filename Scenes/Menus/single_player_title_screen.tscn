@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="2_ha7ql"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
-[ext_resource type="Script" path="res://addons/Better Rich Text Labels/better_rich_text_label.gd" id="2_w768j"]
+[ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="2_w768j"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
 
 [node name="SinglePlayerTitleScreen" type="Control"]

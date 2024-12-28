@@ -26,4 +26,5 @@ func _process(_delta: float) -> void:
 	your_gold_display.text = "%d" % your_gold
 
 func _game_over():
+	#get_tree().paused = true #Commented out cause it's cooler to have stuff still happen in the back but if we experiance bugs uncomment
 	gameover_display.visible = true

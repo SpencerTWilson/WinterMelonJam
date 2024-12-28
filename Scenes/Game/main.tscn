@@ -1,16 +1,21 @@
-[gd_scene load_steps=14 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=19 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
 [ext_resource type="PackedScene" uid="uid://462i3n4k2qm" path="res://Scenes/Game/Buildings/team_spawn_manager.tscn" id="2_2sdlk"]
 [ext_resource type="PackedScene" uid="uid://bg1qyotc43evj" path="res://Scenes/Game/Units/melee_soldier.tscn" id="2_5fy4v"]
 [ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="3_0y2yv"]
+[ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="6_c06ec"]
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="6_e7sx8"]
 [ext_resource type="Texture2D" uid="uid://ci056qji3gmr6" path="res://Assets/Sprites/tile_0151.png" id="6_s2o1y"]
-[ext_resource type="Script" path="res://addons/Better Rich Text Labels/better_rich_text_label.gd" id="6_txq1v"]
+[ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="6_txq1v"]
+[ext_resource type="Script" path="res://Scenes/Game/game_over_panel.gd" id="9_0eudo"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="9_upmjw"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="10_djly2"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
+[ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
+[ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
+[ext_resource type="PackedScene" uid="uid://ksrlvych10n0" path="res://Scenes/Game/Cards/Card.tscn" id="15_dnu7n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
 texture = ExtResource("1_jc3p4")
@@ -243,19 +248,30 @@ position = Vector2(-75, 60)
 attack_dmg = 6.0
 max_health = 11.0
 
+[node name="CardLayer" type="Node2D" parent="."]
+
+[node name="Card" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
+position = Vector2(19.1932, 146.048)
+card_name = "jimbo"
+tags = ["buff"]
+rest_slot = NodePath("../CardSlot")
+
+[node name="CardSlot" parent="CardLayer" instance=ExtResource("6_c06ec")]
+position = Vector2(574, 595)
+
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager", "blue_gold_display", "red_gold_display", "your_gold_display", "gameover_display") groups=["GameManager"]]
 script = ExtResource("3_0y2yv")
 blue_team_spawn_manager = NodePath("../BlueCapital/TeamSpawnManager")
 red_team_spawn_manager = NodePath("../RedCapital/TeamSpawnManager")
-blue_gold_display = NodePath("CanvasLayer/HBoxContainer/BlueCoins")
-red_gold_display = NodePath("CanvasLayer/HBoxContainer/RedCoins")
-your_gold_display = NodePath("CanvasLayer/HBoxContainer2/YourCoins")
-gameover_display = NodePath("CanvasLayer/Panel")
+blue_gold_display = NodePath("CanvasLayer/CoinDisplays/BlueCoins")
+red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
+your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
+gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/CanvasLayer"]
+[node name="CoinDisplays" type="HBoxContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = -1
 anchor_top = 0.347
 anchor_right = 1.0
@@ -265,13 +281,13 @@ offset_bottom = 0.279984
 grow_horizontal = 2
 theme = ExtResource("6_e7sx8")
 
-[node name="BlueCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/HBoxContainer"]
+[node name="BlueCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 texture = ExtResource("6_s2o1y")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/HBoxContainer"]
+[node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 34
@@ -280,7 +296,7 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
 
-[node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/HBoxContainer"]
+[node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 34
@@ -289,13 +305,13 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
 
-[node name="RedCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/HBoxContainer"]
+[node name="RedCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 texture = ExtResource("6_s2o1y")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameManager/CanvasLayer"]
+[node name="YourCoins" type="HBoxContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -304,13 +320,13 @@ offset_right = 498.0
 grow_vertical = 0
 theme = ExtResource("6_e7sx8")
 
-[node name="YourCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/HBoxContainer2"]
+[node name="YourCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 texture = ExtResource("6_s2o1y")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/HBoxContainer2"]
+[node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 64
@@ -319,7 +335,8 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 3.25
 
-[node name="Panel" type="Panel" parent="GameManager/CanvasLayer"]
+[node name="GameOverPanel" type="Panel" parent="GameManager/CanvasLayer"]
+process_mode = 3
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,8 +344,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_e7sx8")
+script = ExtResource("9_0eudo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/CanvasLayer/GameOverPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -339,7 +357,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/Panel/VBoxContainer"]
+[node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_upmjw")
 theme_override_font_sizes/normal_font_size = 49
@@ -348,13 +366,26 @@ text = "[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/c
 fit_content = true
 script = ExtResource("6_txq1v")
 
-[node name="RestartButton" type="Button" parent="GameManager/CanvasLayer/Panel/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
 script = ExtResource("10_djly2")
 next_scene = "res://Scenes/Menus/single_player_title_screen.tscn"
 
-[node name="QuitButton" type="Button" parent="GameManager/CanvasLayer/Panel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("11_uidoo")
+
+[node name="SettingsButton" type="Button" parent="GameManager/CanvasLayer" node_paths=PackedStringArray("canvas_layer")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 45.0
+offset_bottom = 45.0
+theme = ExtResource("6_e7sx8")
+icon = ExtResource("13_rvd7r")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_fjmko")
+settings_scene_path = "res://Scenes/Menus/settings.tscn"
+canvas_layer = NodePath("..")
