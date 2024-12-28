@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://01ui26hch63g"]
+[gd_scene load_steps=24 format=3 uid="uid://01ui26hch63g"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Units/ranged_soldier.gd" id="1_tsvah"]
 [ext_resource type="AudioStream" uid="uid://p2b0gojb4iep" path="res://Assets/Audio/SFX/Audio/impactTin_medium_000.ogg" id="2_iia02"]
 [ext_resource type="AudioStream" uid="uid://dgfrarf4d1yt" path="res://Assets/Audio/SFX/Audio/impactTin_medium_002.ogg" id="3_lbwwh"]
 [ext_resource type="AudioStream" uid="uid://bn5isj4n3a3ux" path="res://Assets/Audio/SFX/Audio/impactTin_medium_004.ogg" id="4_svjbp"]
 [ext_resource type="AudioStream" uid="uid://mwvkt77ngudq" path="res://Assets/Audio/SFX/Units/grunt1.ogg" id="5_5nskl"]
+[ext_resource type="PackedScene" uid="uid://dcds87xfu0r8w" path="res://Scenes/Game/Units/bullet.tscn" id="5_akiup"]
 [ext_resource type="AudioStream" uid="uid://c6lx77egcw5ho" path="res://Assets/Audio/SFX/Units/grunt2.ogg" id="6_e66hu"]
 [ext_resource type="AudioStream" uid="uid://bcrigci8sivtu" path="res://Assets/Audio/SFX/Units/grunt3.ogg" id="7_3yym8"]
 [ext_resource type="Texture2D" uid="uid://f2hk5jgaa7x6" path="res://Assets/Sprites/KennyBattleTiles/tile_0106.png" id="8_y04vn"]
@@ -53,6 +54,7 @@ gradient = SubResource("Gradient_7r6rg")
 collision_mask = 2
 script = ExtResource("1_tsvah")
 attack_sounds = [ExtResource("2_iia02"), ExtResource("3_lbwwh"), ExtResource("4_svjbp")]
+bullet = ExtResource("5_akiup")
 attack_timer = NodePath("AttackTimer")
 attack_dmg = 1.0
 value = 2
