@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
-[ext_resource type="Texture2D" uid="uid://c5l0njkmhd8r1" path="res://Assets/Sprites/money/money.tres" id="15_d2ion"]
 [ext_resource type="PackedScene" uid="uid://ksrlvych10n0" path="res://Scenes/Game/Cards/Card.tscn" id="15_dnu7n"]
+[ext_resource type="PackedScene" uid="uid://b0g3vv0kokja1" path="res://Scenes/Game/dolla.tscn" id="15_qs4nl"]
 [ext_resource type="Shader" path="res://shaders/winner_overlay.gdshader" id="20_0y3jf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
@@ -423,16 +423,13 @@ offset_bottom = 0.279984
 grow_horizontal = 2
 theme = ExtResource("6_e7sx8")
 
-[node name="BlueCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
+[node name="BlueCoinIcon" parent="GameManager/CanvasLayer/CoinDisplays" instance=ExtResource("15_qs4nl")]
 layout_mode = 2
-texture = ExtResource("15_d2ion")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -441,17 +438,14 @@ base_size = 1.75
 [node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
 
-[node name="RedCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
+[node name="RedCoinIcon" parent="GameManager/CanvasLayer/CoinDisplays" instance=ExtResource("15_qs4nl")]
 layout_mode = 2
-texture = ExtResource("15_d2ion")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="YourCoins" type="HBoxContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 2
@@ -462,16 +456,13 @@ offset_right = 498.0
 grow_vertical = 0
 theme = ExtResource("6_e7sx8")
 
-[node name="YourCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/YourCoins"]
+[node name="yourCoinIcon" parent="GameManager/CanvasLayer/YourCoins" instance=ExtResource("15_qs4nl")]
 layout_mode = 2
-texture = ExtResource("15_d2ion")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/normal_font_size = 39
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -502,7 +493,7 @@ alignment = 1
 [node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_upmjw")
-theme_override_font_sizes/normal_font_size = 43
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
 fit_content = true
