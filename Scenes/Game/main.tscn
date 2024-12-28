@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="10_djly2"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
 [ext_resource type="PackedScene" uid="uid://ddtsmm3xyhtqt" path="res://Scenes/Game/Units/tank.tscn" id="12_g6jgc"]
-[ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
 [ext_resource type="PackedScene" uid="uid://ksrlvych10n0" path="res://Scenes/Game/Cards/Card.tscn" id="15_dnu7n"]

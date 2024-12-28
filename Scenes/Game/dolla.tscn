@@ -6,25 +6,13 @@
 
 [sub_resource type="Animation" id="Animation_5m8d1"]
 resource_name = "Collect"
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.6, 1),
-"transitions": PackedFloat32Array(0.5, 1, 0.148651, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -18), Vector2(0, -18), Vector2(0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -32,21 +20,21 @@ tracks/1/keys = {
 "method": &"splash"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.148651, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -18), Vector2(0, -18), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0jrej"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blqsj"]
 _data = {
@@ -75,7 +63,7 @@ scale_min = 0.25
 scale_max = 0.75
 scale_curve = SubResource("CurveTexture_mp8m7")
 
-[node name="CoinIcon" type="TextureRect" node_paths=PackedStringArray("particles", "anim")]
+[node name="CoinIcon" type="TextureRect" node_paths=PackedStringArray("particles", "anim", "jank")]
 custom_minimum_size = Vector2(18, 18)
 offset_right = 18.0
 offset_bottom = 18.0
@@ -85,6 +73,9 @@ stretch_mode = 4
 script = ExtResource("2_grihs")
 particles = NodePath("Control/GPUParticles2D")
 anim = NodePath("AnimationPlayer")
+jank = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
