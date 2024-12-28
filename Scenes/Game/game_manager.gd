@@ -12,6 +12,7 @@ class_name GameManager
 
 @export var units: Array
 
+@export var unit_unlock_costs: Array[int]
 @export var ranged_cost: int
 @export var tank_cost: int
 @export var helecopter_cost: int
@@ -34,23 +35,10 @@ func _game_over():
 	gameover_display.visible = true
 
 func _on_buy_tank_timer_timeout() -> void:
-	if blue_team_gold >= ranged_cost and !blue_team_spawn_manager.unlocked_units.has(units[1]):
-		blue_team_spawn_manager.unlocked_units[units[1]] = null
-		blue_team_gold -= ranged_cost
-	if red_team_gold >= ranged_cost and !red_team_spawn_manager.unlocked_units.has(units[1]):
-		red_team_spawn_manager.unlocked_units[units[1]] = null
-		red_team_gold -= ranged_cost
-	
-	if blue_team_gold >= tank_cost and !blue_team_spawn_manager.unlocked_units.has(units[2]):
-		blue_team_spawn_manager.unlocked_units[units[2]] = null
-		blue_team_gold -= tank_cost
-	if red_team_gold >= tank_cost and !red_team_spawn_manager.unlocked_units.has(units[2]):
-		red_team_spawn_manager.unlocked_units[units[2]] = null
-		red_team_gold -= tank_cost
-		
-	if blue_team_gold >= helecopter_cost and !blue_team_spawn_manager.unlocked_units.has(units[3]):
-		blue_team_spawn_manager.unlocked_units[units[3]] = null
-		blue_team_gold -= helecopter_cost
-	if red_team_gold >= helecopter_cost and !red_team_spawn_manager.unlocked_units.has(units[3]):
-		red_team_spawn_manager.unlocked_units[units[3]] = null
-		red_team_gold -= helecopter_cost
+	for i in range(unit_unlock_costs.size()):
+		if blue_team_gold >= unit_unlock_costs[i] and !blue_team_spawn_manager.unlocked_units.has(units[i+1]):
+			blue_team_spawn_manager.unlocked_units[units[i+1]] = null
+			blue_team_gold -= unit_unlock_costs[i]
+		if red_team_gold >= unit_unlock_costs[i] and !red_team_spawn_manager.unlocked_units.has(units[i+1]):
+			red_team_spawn_manager.unlocked_units[units[i+1]] = null
+			red_team_gold -= unit_unlock_costs[i]

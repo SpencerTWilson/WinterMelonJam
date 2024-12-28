@@ -370,6 +370,7 @@ red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
 your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx")]
+unit_unlock_costs = Array[int]([7, 15, 12])
 ranged_cost = 7
 tank_cost = 15
 helecopter_cost = 12
