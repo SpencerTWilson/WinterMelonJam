@@ -15,6 +15,7 @@ var collision: KinematicCollision2D
 func _ready() -> void:
 	super._ready()
 	modulate.a = 0
+	spawn_anim_timer.timeout.connect(_finish_fade_in)
 	if !blue_team:
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, true)
@@ -45,6 +46,9 @@ func _process(delta: float) -> void:
 		modulate.a = remap(death_anim_timer.time_left, 0.5, 0, 1, 0)
 	if spawn_anim_timer.time_left > 0:
 		modulate.a = remap(spawn_anim_timer.time_left, 0.5, 0, 0, 1)
+
+func _finish_fade_in():
+	modulate.a = 1
 
 func _on_death():
 	#gold

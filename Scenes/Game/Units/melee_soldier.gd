@@ -11,8 +11,13 @@ func _physics_process(delta: float) -> void:
 	if collision != null:
 		collider = collision.get_collider()
 	#If we collided with an opposing team obj
-	if collider != null and collider is TeamObj and !dead:
+	if collider != null and collider is TeamObj: #and !dead:
 		if collider.blue_team != blue_team:
+			#make sure we haven't died too long ago A little leinency is here cause otherwise physics engine favors blue
+			if death_anim_timer != null:
+				if death_anim_timer.time_left <= 0.49:
+					return
+			
 			#If our attack isn't on cooldown
 			if attack_timer.time_left == 0:
 				attack_timer.start()
