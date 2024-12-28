@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=38 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="6_c06ec"]
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="6_e7sx8"]
 [ext_resource type="Texture2D" uid="uid://bdre0bp6mefg4" path="res://Assets/Sprites/color_purple_empty.png" id="6_i6hs0"]
-[ext_resource type="Texture2D" uid="uid://ci056qji3gmr6" path="res://Assets/Sprites/tile_0151.png" id="6_s2o1y"]
 [ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="6_txq1v"]
 [ext_resource type="Texture2D" uid="uid://c6ur85y4qkc5b" path="res://Assets/Sprites/color_red_empty.png" id="7_07ypn"]
 [ext_resource type="Script" path="res://Scenes/Game/Cards/card_slot_hand.gd" id="7_jg3eu"]
@@ -17,8 +16,10 @@
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="9_upmjw"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="10_djly2"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
+[ext_resource type="PackedScene" uid="uid://ddtsmm3xyhtqt" path="res://Scenes/Game/Units/tank.tscn" id="12_g6jgc"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
+[ext_resource type="Texture2D" uid="uid://c5l0njkmhd8r1" path="res://Assets/Sprites/money/money.tres" id="15_d2ion"]
 [ext_resource type="PackedScene" uid="uid://ksrlvych10n0" path="res://Scenes/Game/Cards/Card.tscn" id="15_dnu7n"]
 [ext_resource type="Shader" path="res://shaders/winner_overlay.gdshader" id="20_0y3jf"]
 
@@ -367,8 +368,9 @@ blue_gold_display = NodePath("CanvasLayer/CoinDisplays/BlueCoins")
 red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
 your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
-units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn")]
-ranged_cost = 1
+units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc")]
+ranged_cost = 7
+tank_cost = 15
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
@@ -382,24 +384,28 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Blue1" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_m7ylv")
 texture = SubResource("GradientTexture2D_atst3")
 
 [node name="Blue2" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(0, 648)
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_m7ylv")
 texture = SubResource("GradientTexture2D_atst3")
 
 [node name="Blue3" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(1152, 0)
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_txhvg")
 texture = SubResource("GradientTexture2D_atst3")
 
 [node name="Blue4" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(1152, 648)
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_txhvg")
 texture = SubResource("GradientTexture2D_atst3")
@@ -416,6 +422,7 @@ theme = ExtResource("6_e7sx8")
 
 [node name="BlueCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
+texture = ExtResource("15_d2ion")
 expand_mode = 2
 stretch_mode = 4
 
@@ -439,7 +446,7 @@ base_size = 1.75
 
 [node name="RedCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
-texture = ExtResource("6_s2o1y")
+texture = ExtResource("15_d2ion")
 expand_mode = 2
 stretch_mode = 4
 
@@ -454,7 +461,7 @@ theme = ExtResource("6_e7sx8")
 
 [node name="YourCoinIcon" type="TextureRect" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
-texture = ExtResource("6_s2o1y")
+texture = ExtResource("15_d2ion")
 expand_mode = 2
 stretch_mode = 4
 

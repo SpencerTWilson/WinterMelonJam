@@ -1,0 +1,35 @@
+[gd_resource type="AnimatedTexture" load_steps=11 format=3 uid="uid://c5l0njkmhd8r1"]
+
+[ext_resource type="Texture2D" uid="uid://c22y2320jmxgi" path="res://Assets/Sprites/money/dolla_00.png" id="1_pav1x"]
+[ext_resource type="Texture2D" uid="uid://ryej1c0dpvaq" path="res://Assets/Sprites/money/dolla_01.png" id="2_lmtev"]
+[ext_resource type="Texture2D" uid="uid://ci363qqxo1vyy" path="res://Assets/Sprites/money/dolla_02.png" id="3_gahn4"]
+[ext_resource type="Texture2D" uid="uid://ddxnv6l8srdbc" path="res://Assets/Sprites/money/dolla_03.png" id="4_m1o4l"]
+[ext_resource type="Texture2D" uid="uid://dfv2oma2yt5x2" path="res://Assets/Sprites/money/dolla_04.png" id="5_ohaqf"]
+[ext_resource type="Texture2D" uid="uid://bv7mgoddih1iv" path="res://Assets/Sprites/money/dolla_05.png" id="6_x02hb"]
+[ext_resource type="Texture2D" uid="uid://c7jrn61n22rwb" path="res://Assets/Sprites/money/dolla_06.png" id="7_ho5j1"]
+[ext_resource type="Texture2D" uid="uid://cjc3ggkonl22h" path="res://Assets/Sprites/money/dolla_07.png" id="8_kcdce"]
+[ext_resource type="Texture2D" uid="uid://3h0v5rh4rphd" path="res://Assets/Sprites/money/dolla_08.png" id="9_47vvx"]
+[ext_resource type="Texture2D" uid="uid://cl48guqsnp5k8" path="res://Assets/Sprites/money/dolla_09.png" id="10_4qfws"]
+
+[resource]
+frames = 10
+speed_scale = 12.0
+frame_0/texture = ExtResource("1_pav1x")
+frame_1/texture = ExtResource("2_lmtev")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_gahn4")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_m1o4l")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_ohaqf")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_x02hb")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_ho5j1")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_kcdce")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("9_47vvx")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("10_4qfws")
+frame_9/duration = 1.0
