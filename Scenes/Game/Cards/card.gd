@@ -10,8 +10,8 @@ var back_texture: Texture2D = preload("res://Assets/Sprites/color_back.png")
 var selected: bool = false
 var locked: bool = false
 
-var selected_scale: float = 2.5
-var unselected_scale: float = 2
+var selected_scale: float = 3.25
+var unselected_scale: float = 3
 
 var selected_sound: AudioStream = preload("res://Assets/Audio/SFX/Audio/footstep_snow_000.ogg")
 var unselected_sound: AudioStream = preload("res://Assets/Audio/SFX/Audio/footstep_snow_001.ogg")
@@ -42,7 +42,7 @@ func _physics_process(delta):
 				texture = back_texture
 			else:
 				texture = front_texture
-	else:
+	elif rest_slot != null:
 		global_position = lerp(global_position, rest_slot.get_card_pos(self), 10 * delta)
 		scale = lerp(scale, Vector2.ONE * unselected_scale, 25 * delta)
 
@@ -52,7 +52,7 @@ func _input(event):
 			selected = false
 			AudioManager._play_clip(unselected_sound, "SFX")
 			#The error annoys me so it's commented out but this is why SlotManager needs to be an autoload vvv
-			var new_slot: CardSlot = null #SlotManager.get_closest_slot(self)
+			var new_slot: CardSlot = SlotManager.get_closest_slot(self)
 			if new_slot != null:
-				rest_slot._remove_card(self)
+				if rest_slot != null: rest_slot._remove_card(self)
 				new_slot._select(self)

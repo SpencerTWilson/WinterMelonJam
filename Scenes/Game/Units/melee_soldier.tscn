@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bg1qyotc43evj"]
+[gd_scene load_steps=22 format=3 uid="uid://bg1qyotc43evj"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Units/melee_soldier.gd" id="1_yur8y"]
 [ext_resource type="AudioStream" uid="uid://c3w4boppurjjp" path="res://Assets/Audio/SFX/Audio/footstep_carpet_000.ogg" id="2_lwqt2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/team_sprite.gd" id="9_8gqfb"]
 [ext_resource type="Texture2D" uid="uid://dm8ltoo2o3i3o" path="res://Assets/Sprites/KennyBattleTiles/tile_0142.png" id="10_djb6k"]
 [ext_resource type="Texture2D" uid="uid://bc3ntjou8hb8e" path="res://Assets/Sprites/KennyBattleTiles/tile_0160.png" id="11_oudfw"]
+[ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="13_qroad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tten6"]
 size = Vector2(24, 31.34)
@@ -83,3 +84,6 @@ texture = SubResource("GradientTexture1D_5o5jx")
 wait_time = 0.5
 one_shot = true
 autostart = true
+
+[node name="CardSlot" parent="." instance=ExtResource("13_qroad")]
+position = Vector2(0, -17)

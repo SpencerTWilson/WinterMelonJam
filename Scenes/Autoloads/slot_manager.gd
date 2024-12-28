@@ -1,7 +1,7 @@
 extends Node
 
 var active_slots: Array = []
-var max_dist: float = 350
+var max_dist: float = 200
 
 func get_closest_slot(card: Card, ignore_max_dist: bool = false):
 	var cur_closest_dist: float = max_dist

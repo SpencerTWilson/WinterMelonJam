@@ -27,3 +27,6 @@ func _remove_card(card: Card):
 		if lock_card:
 			card.locked = false
 		cards.erase(card)
+
+func _exit_tree() -> void:
+	SlotManager.active_slots.erase(self)
