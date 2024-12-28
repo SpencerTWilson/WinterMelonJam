@@ -32,7 +32,9 @@ func _game_over():
 	gameover_display.visible = true
 
 func _on_buy_tank_timer_timeout() -> void:
-	if blue_team_gold >= ranged_cost:
+	if blue_team_gold >= ranged_cost and !blue_team_spawn_manager.unlocked_units.has(units[1]):
 		blue_team_spawn_manager.unlocked_units[units[1]] = null
-	if red_team_gold >= ranged_cost:
-		blue_team_spawn_manager.unlocked_units[units[1]] = null
+		blue_team_gold -= ranged_cost
+	if red_team_gold >= ranged_cost and !red_team_spawn_manager.unlocked_units.has(units[1]):
+		red_team_spawn_manager.unlocked_units[units[1]] = null
+		red_team_gold -= ranged_cost
