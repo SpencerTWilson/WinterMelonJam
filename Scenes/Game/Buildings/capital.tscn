@@ -13,7 +13,7 @@ size = Vector2(126, 126)
 [sub_resource type="Gradient" id="Gradient_2avh1"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.286885, 0.762295)
-colors = PackedColorArray(0.710936, 0, 0.0782622, 1, 0.172439, 0.516813, 0.223619, 1, 0.22, 1, 0.324, 1)
+colors = PackedColorArray(0.78, 0.1716, 0.18174, 1, 0.172439, 0.516813, 0.223619, 1, 0.096285, 0.880259, 0.501142, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_op5nf"]
 gradient = SubResource("Gradient_2avh1")
@@ -27,7 +27,7 @@ gradient = SubResource("Gradient_txr2w")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8nnqw"]
 shader = ExtResource("2_k0j08")
 shader_parameter/stepify = true
-shader_parameter/value = 1.0
+shader_parameter/value = 0.117
 shader_parameter/count = 4
 shader_parameter/margin = Vector2(0.1, 0.1)
 shader_parameter/shear_angle = -0.043

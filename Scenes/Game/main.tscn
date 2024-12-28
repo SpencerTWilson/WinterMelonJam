@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=36 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -227,9 +227,79 @@ sources/0 = SubResource("TileSetAtlasSource_v6adm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3hy30"]
 shader = ExtResource("20_0y3jf")
-shader_parameter/Team1 = Color(0.638873, 0.0481611, 0.21948, 1)
-shader_parameter/Team2 = Color(0.0976118, 0.461555, 0.83285, 1)
-shader_parameter/value = 1.0
+shader_parameter/Team1 = Color(0.0980392, 0.462745, 0.831373, 1)
+shader_parameter/Team2 = Color(0.639216, 0.0509804, 0.219608, 1)
+shader_parameter/value = 0.123
+
+[sub_resource type="Gradient" id="Gradient_jxrjg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.698885)
+colors = PackedColorArray(0.330727, 0.482489, 0.844414, 1, 0.375171, 0.68652, 0.864198, 1, 0.428022, 0.92915, 0.887725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2mjgy"]
+gradient = SubResource("Gradient_jxrjg")
+
+[sub_resource type="Curve" id="Curve_h0d1c"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t056o"]
+curve = SubResource("Curve_h0d1c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7ylv"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_t056o")
+color_initial_ramp = SubResource("GradientTexture1D_2mjgy")
+
+[sub_resource type="Gradient" id="Gradient_4lgxn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_atst3"]
+gradient = SubResource("Gradient_4lgxn")
+
+[sub_resource type="Gradient" id="Gradient_k3yf4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.695167)
+colors = PackedColorArray(1, 0.370789, 0.366532, 1, 0.89013, 0.429475, 0.64709, 1, 1, 0.806884, 0.933752, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ony5o"]
+gradient = SubResource("Gradient_k3yf4")
+
+[sub_resource type="Curve" id="Curve_yyxk3"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yahja"]
+curve = SubResource("Curve_yyxk3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_txhvg"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_yahja")
+color_initial_ramp = SubResource("GradientTexture1D_ony5o")
 
 [node name="Main" type="Node2D"]
 
@@ -258,7 +328,6 @@ position = Vector2(-75, 60)
 
 [node name="Card" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
-scale = Vector2(3.9375, 3.75)
 card_name = "jimbo"
 tags = ["heal"]
 rest_slot = NodePath("../CardSlot")
@@ -266,16 +335,14 @@ idle_particles = NodePath("Plus")
 
 [node name="Card2" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
-scale = Vector2(3.9375, 3.75)
 texture = ExtResource("6_i6hs0")
 card_name = "jimbo"
 tags = ["buff"]
 rest_slot = NodePath("../CardSlot")
 idle_particles = NodePath("Buff")
 
-[node name="Card3" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
+[node name="Card3" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
-scale = Vector2(3.9375, 3.75)
 texture = ExtResource("7_07ypn")
 card_name = "jimbo"
 tags = ["dmg"]
@@ -300,6 +367,38 @@ units = [ExtResource("2_5fy4v")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
+[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer"]
+material = SubResource("ShaderMaterial_3hy30")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Blue1" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_m7ylv")
+texture = SubResource("GradientTexture2D_atst3")
+
+[node name="Blue2" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+position = Vector2(0, 648)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_m7ylv")
+texture = SubResource("GradientTexture2D_atst3")
+
+[node name="Blue3" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+position = Vector2(1152, 0)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_txhvg")
+texture = SubResource("GradientTexture2D_atst3")
+
+[node name="Blue4" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+position = Vector2(1152, 648)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_txhvg")
+texture = SubResource("GradientTexture2D_atst3")
+
 [node name="CoinDisplays" type="HBoxContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = -1
 anchor_top = 0.347
@@ -319,7 +418,7 @@ stretch_mode = 4
 [node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -328,7 +427,7 @@ base_size = 1.75
 [node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -358,7 +457,7 @@ stretch_mode = 4
 [node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/normal_font_size = 39
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -389,7 +488,7 @@ alignment = 1
 [node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_upmjw")
-theme_override_font_sizes/normal_font_size = 49
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
 fit_content = true
@@ -418,11 +517,3 @@ expand_icon = true
 script = ExtResource("14_fjmko")
 settings_scene_path = "res://Scenes/Menus/settings.tscn"
 canvas_layer = NodePath("..")
-
-[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer"]
-material = SubResource("ShaderMaterial_3hy30")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
