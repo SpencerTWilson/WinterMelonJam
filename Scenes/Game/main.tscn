@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=45 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -8,17 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://01ui26hch63g" path="res://Scenes/Game/Units/ranged_soldier.tscn" id="4_1jmwn"]
 [ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="6_c06ec"]
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="6_e7sx8"]
-[ext_resource type="Texture2D" uid="uid://bdre0bp6mefg4" path="res://Assets/Sprites/color_purple_empty.png" id="6_i6hs0"]
 [ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="6_txq1v"]
-[ext_resource type="Texture2D" uid="uid://c6ur85y4qkc5b" path="res://Assets/Sprites/color_red_empty.png" id="7_07ypn"]
 [ext_resource type="Script" path="res://Scenes/Game/Cards/card_slot_hand.gd" id="7_jg3eu"]
 [ext_resource type="Script" path="res://Scenes/Game/game_over_panel.gd" id="9_0eudo"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="9_upmjw"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="10_djly2"]
 [ext_resource type="Texture2D" uid="uid://bacluyhllpbaq" path="res://Assets/Sprites/color_back.png" id="10_mw5u1"]
-[ext_resource type="Script" path="res://Scenes/Game/deck.gd" id="11_cr341"]
+[ext_resource type="Script" path="res://Scenes/Game/Cards/deck.gd" id="11_cr341"]
 [ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="11_flxch"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
+[ext_resource type="AudioStream" uid="uid://d5cl2t26y5yi" path="res://Assets/Audio/SFX/Explosion/wrong.ogg" id="12_53t34"]
 [ext_resource type="PackedScene" uid="uid://ddtsmm3xyhtqt" path="res://Scenes/Game/Units/tank.tscn" id="12_g6jgc"]
 [ext_resource type="AudioStream" uid="uid://mu8jtf12h533" path="res://Assets/Audio/SFX/Explosion/coins.ogg" id="12_y7kcc"]
 [ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
@@ -338,43 +337,27 @@ collision_layer = 2
 position = Vector2(-75, 60)
 
 [node name="MeleeSoldier" parent="RedCapital/TeamSpawnManager" instance=ExtResource("2_5fy4v")]
-max_health = 16.0
 
 [node name="CardLayer" type="Node2D" parent="."]
 
-[node name="Card" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
-position = Vector2(19.1932, 146.048)
-card_name = "jimbo"
-tags = ["heal"]
-rest_slot = NodePath("../CardSlot")
-
-[node name="Card2" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
-position = Vector2(19.1932, 146.048)
-texture = ExtResource("6_i6hs0")
-card_name = "jimbo"
-tags = ["buff"]
-rest_slot = NodePath("../CardSlot")
-
-[node name="Card3" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
-position = Vector2(19.1932, 146.048)
-texture = ExtResource("7_07ypn")
-card_name = "jimbo"
-tags = ["dmg"]
-rest_slot = NodePath("../CardSlot")
-
-[node name="CardSlot" parent="CardLayer" instance=ExtResource("6_c06ec")]
+[node name="Hand" parent="CardLayer" instance=ExtResource("6_c06ec")]
 position = Vector2(574, 595)
 script = ExtResource("7_jg3eu")
 hand_spacing = 75.0
 num_cards_allowed = 10
 
-[node name="Deck" type="Sprite2D" parent="CardLayer" node_paths=PackedStringArray("game_manager")]
+[node name="Deck" type="Sprite2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "hand", "cost_display")]
 position = Vector2(966, 586)
 scale = Vector2(3, 3)
 texture = ExtResource("10_mw5u1")
 script = ExtResource("11_cr341")
 game_manager = NodePath("../../GameManager")
-denied_sound = ExtResource("12_y7kcc")
+hand = NodePath("../Hand")
+cost_display = NodePath("../../GameManager/CanvasLayer/CardCost")
+card_scene = ExtResource("15_dnu7n")
+card_data_file = "res://Scenes/Game/Cards/cards.json"
+denied_sound = ExtResource("12_53t34")
+buy_sound = ExtResource("12_y7kcc")
 
 [node name="PlusSign" type="Sprite2D" parent="CardLayer/Deck"]
 scale = Vector2(0.333334, 0.333334)
@@ -397,7 +380,7 @@ red_gold_icon = NodePath("CanvasLayer/CoinDisplays/RedCoinIcon")
 your_gold_icon = NodePath("CanvasLayer/YourCoins/yourCoinIcon")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx"), ExtResource("14_eeesk")]
-unit_unlock_costs = Array[int]([7, 17, 12, 11])
+unit_unlock_costs = Array[int]([7, 17, 12, 15])
 ranged_cost = 7
 tank_cost = 15
 helecopter_cost = 12
@@ -551,6 +534,24 @@ expand_icon = true
 script = ExtResource("14_fjmko")
 settings_scene_path = "res://Scenes/Menus/settings.tscn"
 canvas_layer = NodePath("..")
+
+[node name="CardCost" type="RichTextLabel" parent="GameManager/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.793
+anchor_right = 0.87
+anchor_bottom = 0.84
+offset_left = -0.120056
+offset_top = 0.135986
+offset_right = -0.240051
+offset_bottom = -0.320007
+size_flags_horizontal = 3
+theme = ExtResource("6_e7sx8")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("6_txq1v")
+base_size = 1.75
 
 [node name="BuyTankTimer" type="Timer" parent="GameManager"]
 wait_time = 4.0

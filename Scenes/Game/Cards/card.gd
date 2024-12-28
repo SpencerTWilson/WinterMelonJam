@@ -10,8 +10,8 @@ var back_texture: Texture2D = preload("res://Assets/Sprites/color_back.png")
 var selected: bool = false
 var locked: bool = false
 
-var selected_scale: float = 3.25
-var unselected_scale: float = 3
+var selected_scale: float = 1.25
+var unselected_scale: float = 1
 
 var selected_sound: AudioStream = preload("res://Assets/Audio/SFX/Card/card1.ogg")
 var unselected_sound: AudioStream = preload("res://Assets/Audio/SFX/Card/card2.ogg")

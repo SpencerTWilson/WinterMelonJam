@@ -18,4 +18,8 @@ func _card_dropped(card: Card, _from_deck: bool):
 			"dmg":
 				$Minus.emitting = true
 				unit._damage(10)
+			"spd":
+				$".".modulate = Color.YELLOW
+				unit.movement_speed += 15
+	card_slot._remove_card(card)
 	card.queue_free()

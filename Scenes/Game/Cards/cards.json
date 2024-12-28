@@ -1,0 +1,18 @@
+{
+"heal":{
+	"tags": ["heal"],
+	"front_texture": "res://Assets/Sprites/color_green_empty.png"
+},
+"buff":{
+	"tags": ["buff"],
+	"front_texture": "res://Assets/Sprites/color_purple_empty.png"
+},
+"dmg":{
+	"tags": ["dmg"],
+	"front_texture": "res://Assets/Sprites/color_red_empty.png"
+},
+"spd":{
+	"tags": ["spd"],
+	"front_texture": "res://Assets/Sprites/color_yellow_empty.png"
+}
+}
