@@ -8,6 +8,10 @@ class_name GameManager
 @export var red_gold_display: RichTextLabel
 @export var your_gold_display: RichTextLabel
 
+@export var blue_gold_icon: TextureRect
+@export var red_gold_icon: TextureRect
+@export var your_gold_icon: TextureRect
+
 @export var gameover_display: Control
 
 @export var units: Array
@@ -42,3 +46,12 @@ func _on_buy_tank_timer_timeout() -> void:
 		if red_team_gold >= unit_unlock_costs[i] and !red_team_spawn_manager.unlocked_units.has(units[i+1]):
 			red_team_spawn_manager.unlocked_units[units[i+1]] = null
 			red_team_gold -= unit_unlock_costs[i]
+
+func collect(who: String):
+	match who:
+		"red":
+			red_gold_icon.collect()
+		"blue":
+			blue_gold_icon.collect()
+		"you":
+			your_gold_icon.collect()

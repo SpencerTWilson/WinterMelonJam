@@ -361,13 +361,16 @@ script = ExtResource("7_jg3eu")
 hand_spacing = 75.0
 num_cards_allowed = 10
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager", "blue_gold_display", "red_gold_display", "your_gold_display", "gameover_display") groups=["GameManager"]]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager", "blue_gold_display", "red_gold_display", "your_gold_display", "blue_gold_icon", "red_gold_icon", "your_gold_icon", "gameover_display") groups=["GameManager"]]
 script = ExtResource("3_0y2yv")
 blue_team_spawn_manager = NodePath("../BlueCapital/TeamSpawnManager")
 red_team_spawn_manager = NodePath("../RedCapital/TeamSpawnManager")
 blue_gold_display = NodePath("CanvasLayer/CoinDisplays/BlueCoins")
 red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
 your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
+blue_gold_icon = NodePath("CanvasLayer/CoinDisplays/BlueCoinIcon")
+red_gold_icon = NodePath("CanvasLayer/CoinDisplays/RedCoinIcon")
+your_gold_icon = NodePath("CanvasLayer/YourCoins/yourCoinIcon")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx")]
 unit_unlock_costs = Array[int]([7, 15, 12])
@@ -429,7 +432,7 @@ layout_mode = 2
 [node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -438,7 +441,7 @@ base_size = 1.75
 [node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -462,7 +465,7 @@ layout_mode = 2
 [node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 39
+theme_override_font_sizes/normal_font_size = 56
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -493,7 +496,7 @@ alignment = 1
 [node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_upmjw")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 43
 bbcode_enabled = true
 text = "[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
 fit_content = true

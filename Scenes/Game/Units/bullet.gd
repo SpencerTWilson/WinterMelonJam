@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 		return
 	global_position = lerp(global_position, target.global_position, speed)
 	
-	if position.is_equal_approx(target.global_position):
+	if global_position.is_equal_approx(target.global_position):
 		queue_free()

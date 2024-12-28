@@ -46,9 +46,14 @@ func _finish_fade_in():
 func _on_death():
 	#gold
 	var game_manager:GameManager = get_tree().get_first_node_in_group("GameManager")
-	if blue_team: game_manager.red_team_gold += value
-	else: game_manager.blue_team_gold += value
+	if blue_team: 
+		game_manager.red_team_gold += value
+		game_manager.collect("red")
+	else: 
+		game_manager.blue_team_gold += value
+		game_manager.collect("blue")
 	game_manager.your_gold += value
+	game_manager.collect("you")
 	#anim
 	AudioManager._play_random_clip(death_sounds, "SFX")
 	death_anim_timer = get_tree().create_timer(0.5)
