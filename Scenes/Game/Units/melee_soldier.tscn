@@ -18,13 +18,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tten6"]
 size = Vector2(24, 31.34)
 
-[sub_resource type="Gradient" id="Gradient_n7jwq"]
+[sub_resource type="Gradient" id="Gradient_2avh1"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.286885, 0.762295)
-colors = PackedColorArray(0.710936, 0, 0.0782622, 1, 0.172439, 0.516813, 0.223619, 1, 0.22, 1, 0.324, 1)
+colors = PackedColorArray(0.78, 0.1716, 0.18174, 1, 0.172439, 0.516813, 0.223619, 1, 0.096285, 0.880259, 0.501142, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lq0w1"]
-gradient = SubResource("Gradient_n7jwq")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0wu1"]
+gradient = SubResource("Gradient_2avh1")
 
 [sub_resource type="Gradient" id="Gradient_3horn"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
@@ -41,7 +41,7 @@ shader_parameter/margin = Vector2(0.1, 0.1)
 shader_parameter/shear_angle = -0.043
 shader_parameter/use_value_gradient = true
 shader_parameter/invert = false
-shader_parameter/gradient_x = SubResource("GradientTexture1D_lq0w1")
+shader_parameter/gradient_x = SubResource("GradientTexture1D_l0wu1")
 shader_parameter/gradient_y = SubResource("GradientTexture1D_s2oi2")
 
 [sub_resource type="Gradient" id="Gradient_7r6rg"]
