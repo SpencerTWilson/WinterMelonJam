@@ -1,12 +1,17 @@
 extends Unit
 
 @export var attack_sounds: Array
-@export var death_sounds: Array
 
 var collider
 
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+	#movement
+	if !blue_team: movement.x = -movement_speed
+	else: movement.x = movement_speed
+	movement.x *= delta
+
+	#We save the collision into a var so any unit that needs that info can have it
+	collision = move_and_collide(movement)
 	
 	if collision != null:
 		collider = collision.get_collider()
@@ -23,7 +28,3 @@ func _physics_process(delta: float) -> void:
 				attack_timer.start()
 				if collider._damage(attack_dmg):
 					AudioManager._play_random_clip(attack_sounds, "SFX")
-
-func _on_death():
-	super._on_death()
-	AudioManager._play_random_clip(death_sounds, "SFX")

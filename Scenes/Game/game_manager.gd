@@ -12,6 +12,8 @@ class_name GameManager
 
 @export var units: Array
 
+@export var ranged_cost: int
+
 var blue_team_gold: int = 0
 var red_team_gold: int = 0
 var your_gold: int = 0
@@ -28,3 +30,9 @@ func _process(_delta: float) -> void:
 func _game_over():
 	#get_tree().paused = true #Commented out cause it's cooler to have stuff still happen in the back but if we experiance bugs uncomment
 	gameover_display.visible = true
+
+func _on_buy_tank_timer_timeout() -> void:
+	if blue_team_gold >= ranged_cost:
+		blue_team_spawn_manager.unlocked_units[units[1]] = null
+	if red_team_gold >= ranged_cost:
+		blue_team_spawn_manager.unlocked_units[units[1]] = null

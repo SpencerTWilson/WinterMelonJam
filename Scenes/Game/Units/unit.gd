@@ -12,6 +12,8 @@ var collision: KinematicCollision2D
 
 @export var spawn_rate: float #Is period so number of seconds til a unit
 
+@export var death_sounds: Array
+
 func _ready() -> void:
 	super._ready()
 	modulate.a = 0
@@ -24,15 +26,6 @@ func _ready() -> void:
 		set_collision_mask_value(2, false)
 		
 		primary_sprite.flip_h = true
-
-func _physics_process(delta: float) -> void:
-	#movement
-	if !blue_team: movement.x = -movement_speed
-	else: movement.x = movement_speed
-	movement.x *= delta
-
-	#We save the collision into a var so any unit that needs that info can have it
-	collision = move_and_collide(movement)
 
 var death_anim_timer: SceneTreeTimer = null
 @onready var spawn_anim_timer: SceneTreeTimer = get_tree().create_timer(0.5)
@@ -57,6 +50,7 @@ func _on_death():
 	else: game_manager.blue_team_gold += value
 	game_manager.your_gold += value
 	#anim
+	AudioManager._play_random_clip(death_sounds, "SFX")
 	death_anim_timer = get_tree().create_timer(0.5)
 	death_anim_timer.timeout.connect(_remove_dead)
 	

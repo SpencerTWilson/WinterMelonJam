@@ -10,7 +10,7 @@ extends RichTextLabel
 ## percentage of screen to take up for font size
 @export var base_size : float = 2.5
 
-func _process(delta):
+func _process(_delta):
 	if keep_text_size:
 		var v 
 		if use_height:
