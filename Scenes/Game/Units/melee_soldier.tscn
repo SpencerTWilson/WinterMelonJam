@@ -70,12 +70,11 @@ blue_team_texture = ExtResource("10_72qmu")
 red_team_texture = ExtResource("11_c5tdt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -17.33)
 shape = SubResource("RectangleShape2D_tten6")
 
 [node name="HealthBar" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ykyns")
-position = Vector2(0, -44)
+position = Vector2(0, -25)
 scale = Vector2(0.132813, 8)
 texture = SubResource("GradientTexture1D_5o5jx")
 
@@ -85,7 +84,6 @@ one_shot = true
 autostart = true
 
 [node name="CardSlot" parent="." instance=ExtResource("13_qroad")]
-position = Vector2(0, -17)
 
 [node name="Card_Effects_Manager" type="Node" parent="." node_paths=PackedStringArray("card_slot", "unit")]
 script = ExtResource("14_iwf72")

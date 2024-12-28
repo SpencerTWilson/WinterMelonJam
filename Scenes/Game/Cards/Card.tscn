@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://ksrlvych10n0"]
+[gd_scene load_steps=23 format=3 uid="uid://ksrlvych10n0"]
 
 [ext_resource type="Texture2D" uid="uid://b6aptnv2n4h60" path="res://Assets/Sprites/color_green_empty.png" id="1_7vqid"]
 [ext_resource type="Script" path="res://Scenes/Game/Cards/card.gd" id="1_m2ibq"]
+[ext_resource type="Script" path="res://Scenes/Game/Cards/vfx_manager.gd" id="3_2fu8o"]
 [ext_resource type="Texture2D" uid="uid://5bl23pjyyhqx" path="res://Assets/Sprites/line_horizontal.png" id="3_wlbpl"]
 [ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="4_vq3my"]
 [ext_resource type="Texture2D" uid="uid://bvtfd3ibowbq" path="res://Assets/Sprites/tool_sword_a.png" id="5_3wt18"]
@@ -91,7 +92,15 @@ script = ExtResource("1_m2ibq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_jfhdr")
 
-[node name="Minus" type="GPUParticles2D" parent="."]
+[node name="VFXManager" type="Node2D" parent="."]
+script = ExtResource("3_2fu8o")
+effects = {
+"buff": NodePath("Buff"),
+"minus": NodePath("Minus"),
+"plus": NodePath("Plus")
+}
+
+[node name="Minus" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_w05hx")
@@ -99,7 +108,7 @@ texture = ExtResource("3_wlbpl")
 randomness = 1.0
 local_coords = true
 
-[node name="Plus" type="GPUParticles2D" parent="."]
+[node name="Plus" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_726t7")
@@ -107,7 +116,7 @@ texture = ExtResource("4_vq3my")
 randomness = 1.0
 local_coords = true
 
-[node name="Buff" type="GPUParticles2D" parent="."]
+[node name="Buff" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_uqvas")

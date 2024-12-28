@@ -10,7 +10,7 @@ func _ready() -> void:
 	if blue_team:
 		$RayCast2D.set_collision_mask_value(1, false)
 		$RayCast2D.set_collision_mask_value(2, true)
-		$RayCast2D.target_position = Vector2(100,0)
+		$RayCast2D.target_position.x = $RayCast2D.target_position.x * -1
 
 func _physics_process(delta: float) -> void:
 	#movement

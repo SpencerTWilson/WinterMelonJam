@@ -3,7 +3,6 @@ extends Unit
 @export var attack_sounds: Array
 
 @export var bullet: PackedScene
-
 var collider
 
 func _ready() -> void:
@@ -12,16 +11,22 @@ func _ready() -> void:
 		$RayCast2D.set_collision_mask_value(1, false)
 		$RayCast2D.set_collision_mask_value(2, true)
 		$RayCast2D.target_position.x = $RayCast2D.target_position.x * -1
+		$RayCast2DUp.set_collision_mask_value(1, false)
+		$RayCast2DUp.set_collision_mask_value(2, true)
+		$RayCast2DUp.target_position.x = $RayCast2DUp.target_position.x * -1
 
 func _physics_process(delta: float) -> void:
 	#movement
-	if !$RayCast2D.is_colliding():
+	if !$RayCast2D.is_colliding() and !$RayCast2DUp.is_colliding():
 		if !blue_team: movement.x = -movement_speed
 		else: movement.x = movement_speed
 		movement.x *= delta
 		move_and_collide(movement)
 	else:
-		collider = $RayCast2D.get_collider()
+		if $RayCast2DUp.is_colliding():
+			collider = $RayCast2DUp.get_collider()
+		else:
+			collider = $RayCast2D.get_collider()
 		#If we collided with an opposing team obj
 		if collider != null and collider is TeamObj: #and !dead:
 			if collider.blue_team != blue_team:
@@ -40,4 +45,5 @@ func _physics_process(delta: float) -> void:
 func _create_bullet():
 	var new_bullet = bullet.instantiate()
 	new_bullet.target = collider
+	new_bullet.modulate = Color.ORANGE
 	add_child(new_bullet)
