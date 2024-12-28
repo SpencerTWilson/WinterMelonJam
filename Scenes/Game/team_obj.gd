@@ -21,8 +21,8 @@ func _damage(dmg: float):
 	if cur_health <= 0:
 		#Just so we display stuff properly
 		cur_health = 0 
-		dead = true
 		_on_death()
+		dead = true
 	return true
 
 func _process(_delta):
