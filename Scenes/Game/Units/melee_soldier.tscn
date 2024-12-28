@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" path="res://Scenes/Game/Units/melee_soldier.gd" id="1_yur8y"]
 [ext_resource type="AudioStream" uid="uid://c3w4boppurjjp" path="res://Assets/Audio/SFX/Audio/footstep_carpet_000.ogg" id="2_lwqt2"]
-[ext_resource type="Texture2D" uid="uid://f2hk5jgaa7x6" path="res://Assets/Sprites/KennyBattleTiles/tile_0106.png" id="2_xxdtv"]
 [ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="3_aoyc3"]
 [ext_resource type="AudioStream" uid="uid://cdh7yxh20eslx" path="res://Assets/Audio/SFX/Audio/footstep_carpet_003.ogg" id="3_i2yjs"]
 [ext_resource type="AudioStream" uid="uid://bdg2018esrg62" path="res://Assets/Audio/SFX/Audio/footstep_carpet_004.ogg" id="4_ocule"]
 [ext_resource type="AudioStream" uid="uid://mwvkt77ngudq" path="res://Assets/Audio/SFX/Units/grunt1.ogg" id="5_32oi6"]
 [ext_resource type="AudioStream" uid="uid://c6lx77egcw5ho" path="res://Assets/Audio/SFX/Units/grunt2.ogg" id="6_kw75c"]
 [ext_resource type="AudioStream" uid="uid://bcrigci8sivtu" path="res://Assets/Audio/SFX/Units/grunt3.ogg" id="7_vgoik"]
+[ext_resource type="Texture2D" uid="uid://6o6i1g0hs4ts" path="res://Assets/Sprites/KennyBattleTiles/tile_0107.png" id="8_dtdvm"]
 [ext_resource type="Script" path="res://Scenes/Game/team_sprite.gd" id="9_8gqfb"]
-[ext_resource type="Texture2D" uid="uid://dm8ltoo2o3i3o" path="res://Assets/Sprites/KennyBattleTiles/tile_0142.png" id="10_djb6k"]
-[ext_resource type="Texture2D" uid="uid://bc3ntjou8hb8e" path="res://Assets/Sprites/KennyBattleTiles/tile_0160.png" id="11_oudfw"]
+[ext_resource type="Texture2D" uid="uid://cau3yixo0oc18" path="res://Assets/Sprites/KennyBattleTiles/tile_0143.png" id="10_72qmu"]
+[ext_resource type="Texture2D" uid="uid://b1fcjor51wlpx" path="res://Assets/Sprites/KennyBattleTiles/tile_0161.png" id="11_c5tdt"]
 [ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="13_qroad"]
 [ext_resource type="Script" path="res://Scenes/Game/Units/card_effects_manager.gd" id="14_iwf72"]
 
@@ -53,12 +53,12 @@ gradient = SubResource("Gradient_7r6rg")
 collision_mask = 2
 script = ExtResource("1_yur8y")
 attack_sounds = [ExtResource("2_lwqt2"), ExtResource("3_i2yjs"), ExtResource("4_ocule")]
-death_sounds = [ExtResource("5_32oi6"), ExtResource("6_kw75c"), ExtResource("7_vgoik")]
 attack_timer = NodePath("AttackTimer")
 attack_dmg = 5.0
 value = 1
 movement_speed = 25.0
 spawn_rate = 5.0
+death_sounds = [ExtResource("5_32oi6"), ExtResource("6_kw75c"), ExtResource("7_vgoik")]
 max_health = 10.0
 healthbar = NodePath("HealthBar")
 primary_sprite = NodePath("Sprite")
@@ -66,10 +66,10 @@ primary_sprite = NodePath("Sprite")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -17.33)
 scale = Vector2(2.25, 2.20875)
-texture = ExtResource("2_xxdtv")
+texture = ExtResource("8_dtdvm")
 script = ExtResource("9_8gqfb")
-blue_team_texture = ExtResource("10_djb6k")
-red_team_texture = ExtResource("11_oudfw")
+blue_team_texture = ExtResource("10_72qmu")
+red_team_texture = ExtResource("11_c5tdt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -17.33)

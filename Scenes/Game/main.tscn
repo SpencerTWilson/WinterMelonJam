@@ -1,10 +1,11 @@
-[gd_scene load_steps=36 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=37 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
 [ext_resource type="PackedScene" uid="uid://462i3n4k2qm" path="res://Scenes/Game/Buildings/team_spawn_manager.tscn" id="2_2sdlk"]
 [ext_resource type="PackedScene" uid="uid://bg1qyotc43evj" path="res://Scenes/Game/Units/melee_soldier.tscn" id="2_5fy4v"]
 [ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="3_0y2yv"]
+[ext_resource type="PackedScene" uid="uid://01ui26hch63g" path="res://Scenes/Game/Units/ranged_soldier.tscn" id="4_1jmwn"]
 [ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="6_c06ec"]
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="6_e7sx8"]
 [ext_resource type="Texture2D" uid="uid://bdre0bp6mefg4" path="res://Assets/Sprites/color_purple_empty.png" id="6_i6hs0"]
@@ -363,7 +364,8 @@ blue_gold_display = NodePath("CanvasLayer/CoinDisplays/BlueCoins")
 red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
 your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
-units = [ExtResource("2_5fy4v")]
+units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn")]
+ranged_cost = 15
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
@@ -418,7 +420,7 @@ stretch_mode = 4
 [node name="BlueCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -427,7 +429,7 @@ base_size = 1.75
 [node name="RedCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/CoinDisplays"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -457,7 +459,7 @@ stretch_mode = 4
 [node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 39
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -488,7 +490,7 @@ alignment = 1
 [node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_upmjw")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 49
 bbcode_enabled = true
 text = "[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
 fit_content = true
@@ -517,3 +519,9 @@ expand_icon = true
 script = ExtResource("14_fjmko")
 settings_scene_path = "res://Scenes/Menus/settings.tscn"
 canvas_layer = NodePath("..")
+
+[node name="BuyTankTimer" type="Timer" parent="GameManager"]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="GameManager/BuyTankTimer" to="GameManager" method="_on_buy_tank_timer_timeout"]
