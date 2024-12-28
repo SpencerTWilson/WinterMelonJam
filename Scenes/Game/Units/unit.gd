@@ -30,6 +30,10 @@ func _ready() -> void:
 var death_anim_timer: SceneTreeTimer = null
 @onready var spawn_anim_timer: SceneTreeTimer = get_tree().create_timer(0.5)
 
+@export var wiggle_amplitude: float = 1.5
+@export var wiggle_speed: float = 0.3
+var wiggle_up: bool = true
+
 func _process(delta: float) -> void:
 	super._process(delta)
 	if death_anim_timer != null:
@@ -39,6 +43,14 @@ func _process(delta: float) -> void:
 		modulate.a = remap(death_anim_timer.time_left, 0.5, 0, 1, 0)
 	if spawn_anim_timer.time_left > 0:
 		modulate.a = remap(spawn_anim_timer.time_left, 0.5, 0, 0, 1)
+
+	if movement.x != 0:
+		if wiggle_up:
+			$Sprite.position.y = lerpf($Sprite.position.y,wiggle_amplitude,wiggle_speed)
+		else:
+			$Sprite.position.y = lerpf($Sprite.position.y,-wiggle_amplitude,wiggle_speed)
+		if is_equal_approx(wiggle_amplitude, $Sprite.position.y) or is_equal_approx(-wiggle_amplitude, $Sprite.position.y):
+			wiggle_up = !wiggle_up
 
 func _finish_fade_in():
 	modulate.a = 1

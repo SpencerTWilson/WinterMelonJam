@@ -9,5 +9,5 @@ speed = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(0, -20)
+scale = Vector2(1.125, 1.125)
 texture = ExtResource("1_f15un")

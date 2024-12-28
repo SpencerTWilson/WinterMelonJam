@@ -3,11 +3,8 @@ extends Node2D
 @export var speed: float
 var target: Node2D
 
-var flip: bool = false
-
 func _ready() -> void:
-	if flip:
-		$Sprite2D.flip_h = true
+	$Sprite2D.look_at(target.global_position)
 
 func _process(delta: float) -> void:
 	if target == null:

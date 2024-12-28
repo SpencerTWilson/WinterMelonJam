@@ -63,7 +63,6 @@ healthbar = NodePath("HealthBar")
 primary_sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -17.33)
 scale = Vector2(2.25, 2.20875)
 texture = ExtResource("8_dtdvm")
 script = ExtResource("9_8gqfb")

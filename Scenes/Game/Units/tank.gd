@@ -38,8 +38,6 @@ func _physics_process(delta: float) -> void:
 						AudioManager._play_random_clip(attack_sounds, "SFX")
 
 func _create_bullet():
-	print("bang!")
 	var new_bullet = bullet.instantiate()
 	new_bullet.target = collider
-	if !blue_team: new_bullet.flip = true
 	add_child(new_bullet)

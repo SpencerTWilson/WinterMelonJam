@@ -50,7 +50,7 @@ shader_parameter/gradient_y = SubResource("GradientTexture1D_s2oi2")
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5o5jx"]
 gradient = SubResource("Gradient_7r6rg")
 
-[node name="Tank" type="CharacterBody2D" node_paths=PackedStringArray("attack_timer", "healthbar", "primary_sprite")]
+[node name="Helecopter" type="CharacterBody2D" node_paths=PackedStringArray("attack_timer", "healthbar", "primary_sprite")]
 position = Vector2(0, -100)
 collision_mask = 2
 script = ExtResource("1_5gh1r")
@@ -67,7 +67,6 @@ healthbar = NodePath("HealthBar")
 primary_sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -17.33)
 scale = Vector2(2.25, 2.20875)
 texture = ExtResource("2_r0ur2")
 script = ExtResource("9_ehy2s")

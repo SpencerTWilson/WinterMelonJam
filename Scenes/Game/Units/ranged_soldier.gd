@@ -39,5 +39,4 @@ func _physics_process(delta: float) -> void:
 func _create_bullet():
 	var new_bullet = bullet.instantiate()
 	new_bullet.target = collider
-	if !blue_team: new_bullet.flip = true
 	add_child(new_bullet)
