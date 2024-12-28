@@ -21,8 +21,12 @@ var flipping: bool = false
 
 @export var rest_slot: CardSlot
 
+@export var idle_particles : GPUParticles2D
+
 func _ready() -> void:
 	front_texture = texture
+	if idle_particles != null:
+		idle_particles.emitting = true
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("select") and !flipping and !locked:

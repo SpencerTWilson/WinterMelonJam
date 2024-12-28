@@ -13,6 +13,7 @@ var collision: KinematicCollision2D
 @export var spawn_rate: float #Is period so number of seconds til a unit
 
 func _ready() -> void:
+	super._ready()
 	modulate.a = 0
 	if !blue_team:
 		set_collision_layer_value(1, false)
