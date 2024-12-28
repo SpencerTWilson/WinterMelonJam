@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlgqgv0hcr32t"]
+[gd_scene load_steps=7 format=3 uid="uid://dlgqgv0hcr32t"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sanry"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
 [ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="2_velxo"]
 [ext_resource type="PackedScene" uid="uid://bx6sjl62aribv" path="res://Scenes/Menus/volume_slider.tscn" id="3_73vph"]
+[ext_resource type="AudioStream" uid="uid://ccacf0wgg20yu" path="res://Assets/Audio/SFX/Audio/footstep_snow_000.ogg" id="5_76dc2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf2ag"]
 bg_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -64,6 +65,7 @@ vertical_alignment = 1
 [node name="MasterVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
 layout_mode = 2
 volume_type = "Master"
+sound_to_play = ExtResource("5_76dc2")
 
 [node name="MusicVolume" type="Label" parent="VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -74,6 +76,7 @@ vertical_alignment = 1
 [node name="MusicVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
 layout_mode = 2
 volume_type = "Music"
+sound_to_play = ExtResource("5_76dc2")
 
 [node name="SFXVolume" type="Label" parent="VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -84,6 +87,7 @@ vertical_alignment = 1
 [node name="SFXVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
 layout_mode = 2
 volume_type = "SFX"
+sound_to_play = ExtResource("5_76dc2")
 
 [node name="UIVolume" type="Label" parent="VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -94,3 +98,4 @@ vertical_alignment = 1
 [node name="UIVolumeSlider" parent="VBoxContainer/MusicVolume" instance=ExtResource("3_73vph")]
 layout_mode = 2
 volume_type = "UI"
+sound_to_play = ExtResource("5_76dc2")

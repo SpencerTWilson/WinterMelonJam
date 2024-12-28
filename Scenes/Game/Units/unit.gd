@@ -1,6 +1,9 @@
 extends TeamObj
 class_name Unit
 
+@export var attack_timer: Timer
+@export var attack_dmg: float
+
 @export var value: int
 @export var movement_speed: float = 0.5
 var movement: Vector2 = Vector2.ZERO

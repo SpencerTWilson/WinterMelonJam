@@ -1,8 +1,5 @@
 extends Unit
 
-@export var attack_timer: Timer
-@export var attack_dmg: float
-
 @export var attack_sounds: Array
 @export var death_sounds: Array
 
