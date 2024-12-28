@@ -5,8 +5,9 @@
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_tk6ip")
-speed = 0.5
+speed = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+z_index = -1
+position = Vector2(0, -20)
 texture = ExtResource("1_f15un")

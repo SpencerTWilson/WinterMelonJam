@@ -32,8 +32,12 @@ func _physics_process(delta: float) -> void:
 				#If our attack isn't on cooldown
 				if attack_timer.time_left == 0:
 					attack_timer.start()
-					var new_bullet = bullet.instantiate()
-					new_bullet.target = collider
-					add_child(new_bullet)
+					_create_bullet()
 					if collider._damage(attack_dmg):
 						AudioManager._play_random_clip(attack_sounds, "SFX")
+
+func _create_bullet():
+	var new_bullet = bullet.instantiate()
+	new_bullet.target = collider
+	if !blue_team: new_bullet.flip = true
+	add_child(new_bullet)
