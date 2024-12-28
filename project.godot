@@ -33,7 +33,8 @@ enabled=PackedStringArray("res://addons/BetterRichTextLabels/plugin.cfg")
 
 folder_colors={
 "res://Assets/": "red",
-"res://Scenes/": "yellow"
+"res://Scenes/": "yellow",
+"res://shaders/": "purple"
 }
 
 [input]

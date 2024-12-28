@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=24 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
 [ext_resource type="PackedScene" uid="uid://ksrlvych10n0" path="res://Scenes/Game/Cards/Card.tscn" id="15_dnu7n"]
+[ext_resource type="Shader" path="res://shaders/winner_overlay.gdshader" id="20_0y3jf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
 texture = ExtResource("1_jc3p4")
@@ -224,6 +225,12 @@ texture = ExtResource("1_jc3p4")
 [sub_resource type="TileSet" id="TileSet_4heer"]
 sources/0 = SubResource("TileSetAtlasSource_v6adm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hy30"]
+shader = ExtResource("20_0y3jf")
+shader_parameter/Team1 = Color(0.638873, 0.0481611, 0.21948, 1)
+shader_parameter/Team2 = Color(0.0976118, 0.461555, 0.83285, 1)
+shader_parameter/value = 1.0
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -254,18 +261,20 @@ max_health = 11.0
 
 [node name="CardLayer" type="Node2D" parent="."]
 
-[node name="Card" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
+[node name="Card" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
 card_name = "jimbo"
 tags = ["heal"]
 rest_slot = NodePath("../CardSlot")
+idle_particles = NodePath("Plus")
 
-[node name="Card2" parent="CardLayer" node_paths=PackedStringArray("rest_slot") instance=ExtResource("15_dnu7n")]
+[node name="Card2" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
 texture = ExtResource("6_i6hs0")
 card_name = "jimbo"
 tags = ["buff"]
 rest_slot = NodePath("../CardSlot")
+idle_particles = NodePath("Buff")
 
 [node name="Card3" parent="CardLayer" node_paths=PackedStringArray("rest_slot", "idle_particles") instance=ExtResource("15_dnu7n")]
 position = Vector2(19.1932, 146.048)
@@ -273,7 +282,7 @@ texture = ExtResource("7_07ypn")
 card_name = "jimbo"
 tags = ["dmg"]
 rest_slot = NodePath("../CardSlot")
-idle_particles = NodePath("GPUParticles2D")
+idle_particles = NodePath("Minus")
 
 [node name="CardSlot" parent="CardLayer" instance=ExtResource("6_c06ec")]
 position = Vector2(574, 595)
@@ -411,3 +420,11 @@ expand_icon = true
 script = ExtResource("14_fjmko")
 settings_scene_path = "res://Scenes/Menus/settings.tscn"
 canvas_layer = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer"]
+material = SubResource("ShaderMaterial_3hy30")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
