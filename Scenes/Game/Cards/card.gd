@@ -13,20 +13,16 @@ var locked: bool = false
 var selected_scale: float = 3.25
 var unselected_scale: float = 3
 
-var selected_sound: AudioStream = preload("res://Assets/Audio/SFX/Audio/footstep_snow_000.ogg")
-var unselected_sound: AudioStream = preload("res://Assets/Audio/SFX/Audio/footstep_snow_001.ogg")
+var selected_sound: AudioStream = preload("res://Assets/Audio/SFX/Card/card1.ogg")
+var unselected_sound: AudioStream = preload("res://Assets/Audio/SFX/Card/card2.ogg")
 
 var flipped: bool = false
 var flipping: bool = false
 
 @export var rest_slot: CardSlot
 
-@export var idle_particles : GPUParticles2D
-
 func _ready() -> void:
 	front_texture = texture
-	if idle_particles != null:
-		idle_particles.emitting = true
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("select") and !flipping and !locked:

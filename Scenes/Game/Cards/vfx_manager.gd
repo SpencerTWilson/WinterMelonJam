@@ -7,11 +7,16 @@ extends Node2D
 var active_effects: Array[String] = []
 
 func _ready() -> void:
-	for effect in effects:
-		if active_effects.has(effect):
-			effects[effect].emitting = true
-		else :
-			effects[effect].emitting = false
+	pass
+	#print(self)
+	#for effect in effects:
+		#effects[effect] = get_node(effects[effect])
+	#
+	#for effect in effects:
+		#if active_effects.has(effect):
+			#effects[effect].emitting = true
+		#else :
+			#effects[effect].emitting = false
 
 #grabs the nodes so that the units can steal them hehe
 func get_active_effects():

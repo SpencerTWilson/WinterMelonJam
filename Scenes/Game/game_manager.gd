@@ -21,6 +21,9 @@ class_name GameManager
 @export var tank_cost: int
 @export var helecopter_cost: int
 
+@export var buy_audio: AudioStream
+@export var collect_audio: AudioStream
+
 var blue_team_gold: int = 0
 var red_team_gold: int = 0
 var your_gold: int = 0
@@ -43,11 +46,14 @@ func _on_buy_tank_timer_timeout() -> void:
 		if blue_team_gold >= unit_unlock_costs[i] and !blue_team_spawn_manager.unlocked_units.has(units[i+1]):
 			blue_team_spawn_manager.unlocked_units[units[i+1]] = null
 			blue_team_gold -= unit_unlock_costs[i]
+			AudioManager._play_clip(buy_audio,"SFX")
 		if red_team_gold >= unit_unlock_costs[i] and !red_team_spawn_manager.unlocked_units.has(units[i+1]):
 			red_team_spawn_manager.unlocked_units[units[i+1]] = null
 			red_team_gold -= unit_unlock_costs[i]
+			AudioManager._play_clip(buy_audio,"SFX")
 
 func collect(who: String):
+	AudioManager._play_clip(collect_audio, "SFX")
 	match who:
 		"red":
 			red_gold_icon.collect()

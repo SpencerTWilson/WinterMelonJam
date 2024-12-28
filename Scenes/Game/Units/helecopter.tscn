@@ -1,20 +1,20 @@
 [gd_scene load_steps=24 format=3 uid="uid://cxkyu6lbqr7x2"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Units/helecopter.gd" id="1_5gh1r"]
-[ext_resource type="AudioStream" uid="uid://d2gwcyd6gpuln" path="res://Assets/Audio/SFX/Audio/impactMetal_heavy_000.ogg" id="2_lr4qj"]
 [ext_resource type="Texture2D" uid="uid://pem16c1amyd1" path="res://Assets/Sprites/KennyBattleTiles/tile_0101.png" id="2_r0ur2"]
-[ext_resource type="AudioStream" uid="uid://6p0uktypj3d0" path="res://Assets/Audio/SFX/Audio/impactMetal_heavy_001.ogg" id="3_ccqrp"]
+[ext_resource type="AudioStream" uid="uid://dlqb853u4cflu" path="res://Assets/Audio/SFX/Shot/shot1.ogg" id="2_yd40u"]
+[ext_resource type="AudioStream" uid="uid://c1pkr2abrgp4b" path="res://Assets/Audio/SFX/Shot/shot2.ogg" id="3_vs3eu"]
 [ext_resource type="Texture2D" uid="uid://cjyyrcvqubfgd" path="res://Assets/Sprites/KennyBattleTiles/tile_0137.png" id="4_5hc8e"]
-[ext_resource type="AudioStream" uid="uid://buxbyr2ghkq0j" path="res://Assets/Audio/SFX/Audio/impactMetal_heavy_003.ogg" id="4_48vgi"]
+[ext_resource type="AudioStream" uid="uid://b0xxpiug3avqv" path="res://Assets/Audio/SFX/Shot/shot3.ogg" id="4_eiuiy"]
 [ext_resource type="Texture2D" uid="uid://3rbi08yw630m" path="res://Assets/Sprites/KennyBattleTiles/tile_0155.png" id="5_6kn6p"]
-[ext_resource type="AudioStream" uid="uid://djcrdy5wix145" path="res://Assets/Audio/SFX/Audio/impactGlass_heavy_000.ogg" id="5_s7usj"]
 [ext_resource type="PackedScene" uid="uid://dcds87xfu0r8w" path="res://Scenes/Game/Units/bullet.tscn" id="5_sg1aw"]
-[ext_resource type="AudioStream" uid="uid://dinr1nh8auy33" path="res://Assets/Audio/SFX/Audio/impactGlass_heavy_001.ogg" id="6_ffgiu"]
-[ext_resource type="AudioStream" uid="uid://chb2u71s46akh" path="res://Assets/Audio/SFX/Audio/impactGlass_heavy_003.ogg" id="7_oovbj"]
+[ext_resource type="AudioStream" uid="uid://d05vhaa0yf7l7" path="res://Assets/Audio/SFX/Explosion/explode1.ogg" id="6_my2q1"]
+[ext_resource type="AudioStream" uid="uid://06uek2rq426g" path="res://Assets/Audio/SFX/Explosion/explode2.ogg" id="7_kqoy4"]
+[ext_resource type="AudioStream" uid="uid://c6x7sudaoa2ym" path="res://Assets/Audio/SFX/Explosion/explode3.ogg" id="8_8p1lj"]
 [ext_resource type="Script" path="res://Scenes/Game/team_sprite.gd" id="9_ehy2s"]
 [ext_resource type="Shader" path="res://Scenes/Game/Buildings/Bar.gdshader" id="12_bs7fn"]
 [ext_resource type="PackedScene" uid="uid://ciuqyxwd65pp8" path="res://Scenes/Game/Cards/CardSlot.tscn" id="13_vfwjw"]
-[ext_resource type="Script" path="res://Scenes/Game/Units/card_effects_manager.gd" id="14_cu0su"]
+[ext_resource type="PackedScene" uid="uid://bvys6vextpwot" path="res://Scenes/Game/Units/card_effects_manager.tscn" id="15_l0b7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tten6"]
 size = Vector2(24, 31.34)
@@ -54,14 +54,14 @@ gradient = SubResource("Gradient_7r6rg")
 position = Vector2(0, -100)
 collision_mask = 2
 script = ExtResource("1_5gh1r")
-attack_sounds = [ExtResource("2_lr4qj"), ExtResource("3_ccqrp"), ExtResource("4_48vgi")]
+attack_sounds = [ExtResource("2_yd40u"), ExtResource("3_vs3eu"), ExtResource("4_eiuiy")]
 bullet = ExtResource("5_sg1aw")
 attack_timer = NodePath("AttackTimer")
 attack_dmg = 5.0
 value = 4
 movement_speed = 50.0
 spawn_rate = 9.0
-death_sounds = [ExtResource("5_s7usj"), ExtResource("6_ffgiu"), ExtResource("7_oovbj")]
+death_sounds = [ExtResource("6_my2q1"), ExtResource("7_kqoy4"), ExtResource("8_8p1lj")]
 max_health = 35.0
 healthbar = NodePath("HealthBar")
 primary_sprite = NodePath("Sprite")
@@ -89,14 +89,13 @@ autostart = true
 
 [node name="CardSlot" parent="." instance=ExtResource("13_vfwjw")]
 
-[node name="Card_Effects_Manager" type="Node" parent="." node_paths=PackedStringArray("card_slot", "unit")]
-script = ExtResource("14_cu0su")
-card_slot = NodePath("../CardSlot")
-unit = NodePath("..")
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-150, 0)
 
 [node name="RayCast2DDown" type="RayCast2D" parent="."]
 position = Vector2(0, 100)
 target_position = Vector2(-100, 0)
+
+[node name="Card_Effects_Manager" parent="." node_paths=PackedStringArray("card_slot", "unit") instance=ExtResource("15_l0b7y")]
+card_slot = NodePath("../CardSlot")
+unit = NodePath("..")

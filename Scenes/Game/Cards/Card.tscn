@@ -14,14 +14,14 @@ size = Vector2(19.1285, 27.0634)
 offsets = PackedFloat32Array(0.539033, 1)
 colors = PackedColorArray(0.811089, 0.166859, 0.227872, 1, 0.00036474, 2.10181e-06, 0.000225463, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hlwal"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vs76b"]
 gradient = SubResource("Gradient_148k5")
 
 [sub_resource type="Curve" id="Curve_530db"]
 _data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ilpks"]
+[sub_resource type="CurveTexture" id="CurveTexture_t6gpu"]
 curve = SubResource("Curve_530db")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w05hx"]
@@ -31,21 +31,21 @@ emission_box_extents = Vector3(11.17, 15.695, 0)
 gravity = Vector3(0, 20, 0)
 scale_min = 0.2
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_ilpks")
-color_ramp = SubResource("GradientTexture1D_hlwal")
+scale_curve = SubResource("CurveTexture_t6gpu")
+color_ramp = SubResource("GradientTexture1D_vs76b")
 
 [sub_resource type="Gradient" id="Gradient_7my1k"]
 offsets = PackedFloat32Array(0.539033, 1)
 colors = PackedColorArray(0, 0.915677, 0.76983, 1, 0.0123941, 0.118114, 0.146603, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_x0aeb"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_govkq"]
 gradient = SubResource("Gradient_7my1k")
 
 [sub_resource type="Curve" id="Curve_l7hkt"]
 _data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_7s1ue"]
+[sub_resource type="CurveTexture" id="CurveTexture_bi4w2"]
 curve = SubResource("Curve_l7hkt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_726t7"]
@@ -55,21 +55,21 @@ emission_box_extents = Vector3(11.17, 15.695, 0)
 gravity = Vector3(0, -20, 0)
 scale_min = 0.2
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_7s1ue")
-color_ramp = SubResource("GradientTexture1D_x0aeb")
+scale_curve = SubResource("CurveTexture_bi4w2")
+color_ramp = SubResource("GradientTexture1D_govkq")
 
 [sub_resource type="Gradient" id="Gradient_nlfwk"]
 offsets = PackedFloat32Array(0.527881, 1)
 colors = PackedColorArray(0.569304, 0.452825, 0.938954, 1, 0.0123941, 0.118114, 0.146603, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_yicpa"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j5mpy"]
 gradient = SubResource("Gradient_nlfwk")
 
 [sub_resource type="Curve" id="Curve_gumi8"]
 _data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_y325c"]
+[sub_resource type="CurveTexture" id="CurveTexture_yx11s"]
 curve = SubResource("Curve_gumi8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uqvas"]
@@ -79,8 +79,8 @@ emission_box_extents = Vector3(11.17, 15.695, 0)
 gravity = Vector3(0, -20, 0)
 scale_min = 0.2
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_y325c")
-color_ramp = SubResource("GradientTexture1D_yicpa")
+scale_curve = SubResource("CurveTexture_yx11s")
+color_ramp = SubResource("GradientTexture1D_j5mpy")
 
 [node name="Card" type="Sprite2D"]
 scale = Vector2(3.9375, 3.75)

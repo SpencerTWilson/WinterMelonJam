@@ -33,8 +33,8 @@ func _physics_process(delta: float) -> void:
 				#If our attack isn't on cooldown
 				if attack_timer.time_left == 0:
 					attack_timer.start()
-					_create_bullet()
 					if collider._damage(attack_dmg):
+						_create_bullet()
 						AudioManager._play_random_clip(attack_sounds, "SFX")
 
 func _create_bullet():

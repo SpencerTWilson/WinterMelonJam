@@ -1,0 +1,105 @@
+[gd_scene load_steps=20 format=3 uid="uid://bvys6vextpwot"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Units/card_effects_manager.gd" id="1_t8nsm"]
+[ext_resource type="Texture2D" uid="uid://5bl23pjyyhqx" path="res://Assets/Sprites/line_horizontal.png" id="2_ftmyo"]
+[ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="3_oipkf"]
+[ext_resource type="Texture2D" uid="uid://bvtfd3ibowbq" path="res://Assets/Sprites/tool_sword_a.png" id="4_llrq3"]
+
+[sub_resource type="Gradient" id="Gradient_vjqob"]
+offsets = PackedFloat32Array(0.539033, 1)
+colors = PackedColorArray(0.811089, 0.166859, 0.227872, 1, 0.00036474, 2.10181e-06, 0.000225463, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hlwal"]
+gradient = SubResource("Gradient_vjqob")
+
+[sub_resource type="Curve" id="Curve_gycw1"]
+_data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ilpks"]
+curve = SubResource("Curve_gycw1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pk4gw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.17, 15.695, 0)
+gravity = Vector3(0, 20, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_ilpks")
+color_ramp = SubResource("GradientTexture1D_hlwal")
+
+[sub_resource type="Gradient" id="Gradient_86q7w"]
+offsets = PackedFloat32Array(0.539033, 1)
+colors = PackedColorArray(0, 0.915677, 0.76983, 1, 0.0123941, 0.118114, 0.146603, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x0aeb"]
+gradient = SubResource("Gradient_86q7w")
+
+[sub_resource type="Curve" id="Curve_ohrxr"]
+_data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7s1ue"]
+curve = SubResource("Curve_ohrxr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojgxn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.17, 15.695, 0)
+gravity = Vector3(0, -20, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_7s1ue")
+color_ramp = SubResource("GradientTexture1D_x0aeb")
+
+[sub_resource type="Gradient" id="Gradient_ylgy1"]
+offsets = PackedFloat32Array(0.527881, 1)
+colors = PackedColorArray(0.569304, 0.452825, 0.938954, 1, 0.0123941, 0.118114, 0.146603, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yicpa"]
+gradient = SubResource("Gradient_ylgy1")
+
+[sub_resource type="Curve" id="Curve_xmw12"]
+_data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y325c"]
+curve = SubResource("Curve_xmw12")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n1410"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.17, 15.695, 0)
+gravity = Vector3(0, -20, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_y325c")
+color_ramp = SubResource("GradientTexture1D_yicpa")
+
+[node name="Card_Effects_Manager" type="Node2D"]
+script = ExtResource("1_t8nsm")
+
+[node name="Minus" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_pk4gw")
+texture = ExtResource("2_ftmyo")
+randomness = 1.0
+local_coords = true
+
+[node name="Plus" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ojgxn")
+texture = ExtResource("3_oipkf")
+randomness = 1.0
+local_coords = true
+
+[node name="Buff" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_n1410")
+texture = ExtResource("4_llrq3")
+randomness = 1.0
+local_coords = true

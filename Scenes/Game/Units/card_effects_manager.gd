@@ -10,9 +10,12 @@ func _card_dropped(card: Card, _from_deck: bool):
 	for type in card.tags:
 		match type:
 			"heal":
+				$Plus.emitting = true
 				unit.cur_health += 10
 			"buff":
+				$Buff.emitting = true
 				unit.attack_dmg += 5
 			"dmg":
-				unit.cur_health -= 10
+				$Minus.emitting = true
+				unit._damage(10)
 	card.queue_free()
