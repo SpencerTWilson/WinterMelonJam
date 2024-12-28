@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=39 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="10_djly2"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
 [ext_resource type="PackedScene" uid="uid://ddtsmm3xyhtqt" path="res://Scenes/Game/Units/tank.tscn" id="12_g6jgc"]
+[ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
 [ext_resource type="Texture2D" uid="uid://c5l0njkmhd8r1" path="res://Assets/Sprites/money/money.tres" id="15_d2ion"]
@@ -368,9 +369,10 @@ blue_gold_display = NodePath("CanvasLayer/CoinDisplays/BlueCoins")
 red_gold_display = NodePath("CanvasLayer/CoinDisplays/RedCoins")
 your_gold_display = NodePath("CanvasLayer/YourCoins/YourCoins")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
-units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc")]
+units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx")]
 ranged_cost = 7
 tank_cost = 15
+helecopter_cost = 12
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 

@@ -14,6 +14,7 @@ class_name GameManager
 
 @export var ranged_cost: int
 @export var tank_cost: int
+@export var helecopter_cost: int
 
 var blue_team_gold: int = 0
 var red_team_gold: int = 0
@@ -46,3 +47,10 @@ func _on_buy_tank_timer_timeout() -> void:
 	if red_team_gold >= tank_cost and !red_team_spawn_manager.unlocked_units.has(units[2]):
 		red_team_spawn_manager.unlocked_units[units[2]] = null
 		red_team_gold -= tank_cost
+		
+	if blue_team_gold >= helecopter_cost and !blue_team_spawn_manager.unlocked_units.has(units[3]):
+		blue_team_spawn_manager.unlocked_units[units[3]] = null
+		blue_team_gold -= helecopter_cost
+	if red_team_gold >= helecopter_cost and !red_team_spawn_manager.unlocked_units.has(units[3]):
+		red_team_spawn_manager.unlocked_units[units[3]] = null
+		red_team_gold -= helecopter_cost
