@@ -4,17 +4,9 @@
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="2_ha7ql"]
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
+[ext_resource type="StyleBox" uid="uid://llmr56kqjddq" path="res://Scenes/Menus/menu_background.tres" id="2_qgkht"]
 [ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="2_w768j"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foupu"]
-bg_color = Color(1.92523e-06, 0.634163, 0.96211, 1)
-border_width_left = 100
-border_width_top = 100
-border_width_right = 100
-border_width_bottom = 100
-border_color = Color(0.79614, 0.18014, 0.248612, 1)
-border_blend = true
 
 [node name="SinglePlayerTitleScreen" type="Control"]
 layout_mode = 3
@@ -32,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_foupu")
+theme_override_styles/panel = ExtResource("2_qgkht")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

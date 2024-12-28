@@ -2,15 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sanry"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
+[ext_resource type="StyleBox" uid="uid://llmr56kqjddq" path="res://Scenes/Menus/menu_background.tres" id="2_4vu8a"]
 [ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="2_velxo"]
 [ext_resource type="PackedScene" uid="uid://bx6sjl62aribv" path="res://Scenes/Menus/volume_slider.tscn" id="3_73vph"]
 [ext_resource type="Script" path="res://addons/BetterRichTextLabels/better_rich_text_label.gd" id="3_ukid5"]
 [ext_resource type="AudioStream" uid="uid://biyqluepm7ord" path="res://Assets/Audio/SFX/Hit/hit1.ogg" id="5_1yakw"]
 [ext_resource type="AudioStream" uid="uid://cwxbrubtp6l3e" path="res://Assets/Audio/SFX/Hit/hit2.ogg" id="6_iqkea"]
 [ext_resource type="AudioStream" uid="uid://cj6fdfibg2dk" path="res://Assets/Audio/SFX/Hit/hit3.ogg" id="7_aa6iw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf2ag"]
-bg_color = Color(0.205117, 0.205117, 0.205117, 1)
 
 [node name="SettingsScreen" type="Control"]
 process_mode = 3
@@ -29,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yf2ag")
+theme_override_styles/panel = ExtResource("2_4vu8a")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -38,17 +36,23 @@ anchor_left = 0.177
 anchor_right = 0.823
 anchor_bottom = 1.0
 offset_left = 0.095993
+offset_top = 100.0
 offset_right = -0.0960083
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("1_sgfbq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
 theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1][center]Settings[/center][/wave]"
+text = "
+[wave amp=50.0 freq=5.0 connected=1][center][color=red]Settings[/color][/center][/wave]"
 fit_content = true
 script = ExtResource("3_ukid5")
 base_size = 4.0
