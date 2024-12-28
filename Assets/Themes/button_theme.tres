@@ -4,4 +4,4 @@
 
 [resource]
 default_font = ExtResource("1_14vwe")
-BoxContainer/constants/separation = 4
+BoxContainer/constants/separation = 15

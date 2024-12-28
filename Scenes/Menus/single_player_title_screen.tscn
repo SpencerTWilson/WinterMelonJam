@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cywnd0r8nh0v5"]
+[gd_scene load_steps=8 format=3 uid="uid://cywnd0r8nh0v5"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sat6m"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
@@ -6,6 +6,15 @@
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
 [ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="2_w768j"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foupu"]
+bg_color = Color(1.92523e-06, 0.634163, 0.96211, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0.79614, 0.18014, 0.248612, 1)
+border_blend = true
 
 [node name="SinglePlayerTitleScreen" type="Control"]
 layout_mode = 3
@@ -23,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_foupu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,18 +40,24 @@ anchors_preset = -1
 anchor_left = 0.248
 anchor_right = 0.752
 anchor_bottom = 1.0
-offset_left = 0.303986
-offset_right = -0.304016
+offset_left = 0.304016
+offset_top = 118.0
+offset_right = -0.303955
+offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("1_w0jkv")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
-text = "[center]Counter Strike[/center]"
+text = "
+[wave amp=50.0 freq=5.0 connected=1][center][color=red]Counter Strike[/color][/center][/wave]"
 fit_content = true
 script = ExtResource("2_w768j")
 base_size = 4.0

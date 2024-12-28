@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlgqgv0hcr32t"]
+[gd_scene load_steps=10 format=3 uid="uid://dlgqgv0hcr32t"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sanry"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
 [ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="2_velxo"]
 [ext_resource type="PackedScene" uid="uid://bx6sjl62aribv" path="res://Scenes/Menus/volume_slider.tscn" id="3_73vph"]
+[ext_resource type="Script" path="res://addons/BetterRichTextLabels/better_rich_text_label.gd" id="3_ukid5"]
 [ext_resource type="AudioStream" uid="uid://biyqluepm7ord" path="res://Assets/Audio/SFX/Hit/hit1.ogg" id="5_1yakw"]
 [ext_resource type="AudioStream" uid="uid://cwxbrubtp6l3e" path="res://Assets/Audio/SFX/Hit/hit2.ogg" id="6_iqkea"]
 [ext_resource type="AudioStream" uid="uid://cj6fdfibg2dk" path="res://Assets/Audio/SFX/Hit/hit3.ogg" id="7_aa6iw"]
@@ -42,11 +43,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_sgfbq")
-text = "Settings"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1][center]Settings[/center][/wave]"
+fit_content = true
+script = ExtResource("3_ukid5")
+base_size = 4.0
 
 [node name="BackButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("settings_node")]
 layout_mode = 2
