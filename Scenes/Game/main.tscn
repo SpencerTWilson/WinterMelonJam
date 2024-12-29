@@ -478,54 +478,6 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 3.25
 
-[node name="GameOverPanel" type="Panel" parent="GameManager/CanvasLayer"]
-process_mode = 3
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_e7sx8")
-script = ExtResource("9_0eudo")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/CanvasLayer/GameOverPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 335.0
-offset_top = 168.0
-offset_right = -335.0
-offset_bottom = -278.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("9_upmjw")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 25
-theme_override_font_sizes/normal_font_size = 46
-bbcode_enabled = true
-text = "
-[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
-fit_content = true
-script = ExtResource("6_txq1v")
-
-[node name="RestartButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-script = ExtResource("10_djly2")
-next_scene = "res://Scenes/Menus/single_player_title_screen.tscn"
-
-[node name="QuitButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
-script = ExtResource("11_uidoo")
-
 [node name="SettingsButton" type="Button" parent="GameManager/CanvasLayer" node_paths=PackedStringArray("canvas_layer")]
 offset_left = 8.0
 offset_top = 8.0
@@ -625,6 +577,54 @@ text = "5"
 fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
+
+[node name="GameOverPanel" type="Panel" parent="GameManager/CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_e7sx8")
+script = ExtResource("9_0eudo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/CanvasLayer/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 335.0
+offset_top = 168.0
+offset_right = -335.0
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameOverText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_upmjw")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "
+[shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
+fit_content = true
+script = ExtResource("6_txq1v")
+
+[node name="RestartButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+script = ExtResource("10_djly2")
+next_scene = "res://Scenes/Menus/single_player_title_screen.tscn"
+
+[node name="QuitButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("11_uidoo")
 
 [node name="BuyTankTimer" type="Timer" parent="GameManager"]
 wait_time = 4.0
