@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ksrlvych10n0"]
+[gd_scene load_steps=29 format=3 uid="uid://ksrlvych10n0"]
 
 [ext_resource type="Texture2D" uid="uid://b6aptnv2n4h60" path="res://Assets/Sprites/color_green_empty.png" id="1_7vqid"]
 [ext_resource type="Script" path="res://Scenes/Game/Cards/card.gd" id="1_m2ibq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5bl23pjyyhqx" path="res://Assets/Sprites/line_horizontal.png" id="3_wlbpl"]
 [ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="4_vq3my"]
 [ext_resource type="Texture2D" uid="uid://bvtfd3ibowbq" path="res://Assets/Sprites/tool_sword_a.png" id="5_3wt18"]
+[ext_resource type="Texture2D" uid="uid://djmpswgo0of4b" path="res://Assets/Sprites/steps.png" id="7_6g401"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfhdr"]
 size = Vector2(19.1285, 27.0634)
@@ -82,6 +83,32 @@ scale_max = 0.2
 scale_curve = SubResource("CurveTexture_yx11s")
 color_ramp = SubResource("GradientTexture1D_j5mpy")
 
+[sub_resource type="Gradient" id="Gradient_qtk35"]
+offsets = PackedFloat32Array(0.527881, 0.988848)
+colors = PackedColorArray(0.89, 0.826662, 0.3471, 1, 0.157688, 0.0840045, 0.00561579, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4i8c"]
+gradient = SubResource("Gradient_qtk35")
+
+[sub_resource type="Curve" id="Curve_sgbyu"]
+_data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h3tkm"]
+curve = SubResource("Curve_sgbyu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up4rl"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.17, 15.695, 0)
+angle_min = -45.0
+angle_max = -45.0
+gravity = Vector3(10, -15, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_h3tkm")
+color_ramp = SubResource("GradientTexture1D_t4i8c")
+
 [node name="Card" type="Sprite2D"]
 scale = Vector2(3.9375, 3.75)
 texture = ExtResource("1_7vqid")
@@ -117,6 +144,13 @@ emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_uqvas")
 texture = ExtResource("5_3wt18")
+randomness = 1.0
+local_coords = true
+
+[node name="Spd" type="GPUParticles2D" parent="VFXManager"]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_up4rl")
+texture = ExtResource("7_6g401")
 randomness = 1.0
 local_coords = true
 
