@@ -352,7 +352,7 @@ scale = Vector2(3, 3)
 script = ExtResource("11_cr341")
 game_manager = NodePath("../../GameManager")
 hand = NodePath("../Hand")
-cost_display = NodePath("../../GameManager/CanvasLayer/CardCost")
+cost_display = NodePath("../../GameManager/CanvasLayer/Control/CardCost")
 card_scene = ExtResource("15_dnu7n")
 card_data_file = "res://Scenes/Game/Cards/cards.json"
 denied_sound = ExtResource("12_53t34")
@@ -522,37 +522,6 @@ layout_mode = 2
 text = "Quit"
 script = ExtResource("11_uidoo")
 
-[node name="SettingsButton" type="Button" parent="GameManager/CanvasLayer" node_paths=PackedStringArray("canvas_layer")]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 45.0
-offset_bottom = 45.0
-theme = ExtResource("6_e7sx8")
-icon = ExtResource("13_rvd7r")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("14_fjmko")
-settings_scene_path = "res://Scenes/Menus/settings.tscn"
-canvas_layer = NodePath("..")
-
-[node name="CardCost" type="RichTextLabel" parent="GameManager/CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.81
-anchor_top = 0.793
-anchor_right = 0.87
-anchor_bottom = 0.84
-offset_left = -0.120056
-offset_top = 0.135986
-offset_right = -0.240051
-offset_bottom = -0.320007
-size_flags_horizontal = 3
-theme = ExtResource("6_e7sx8")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-fit_content = true
-script = ExtResource("6_txq1v")
-base_size = 1.75
-
 [node name="Control" type="TextureRect" parent="GameManager/CanvasLayer"]
 offset_left = 987.0
 offset_top = 481.0
@@ -574,6 +543,39 @@ grow_vertical = 2
 texture = ExtResource("11_flxch")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="CardCost" type="RichTextLabel" parent="GameManager/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.793
+anchor_right = 0.87
+anchor_bottom = 0.84
+offset_left = -66.1
+offset_top = -113.23
+offset_right = -7.82001
+offset_bottom = -84.5
+size_flags_horizontal = 3
+theme = ExtResource("6_e7sx8")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "5"
+fit_content = true
+script = ExtResource("6_txq1v")
+base_size = 1.75
+
+[node name="SettingsButton" type="Button" parent="GameManager/CanvasLayer" node_paths=PackedStringArray("canvas_layer")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 45.0
+offset_bottom = 45.0
+theme = ExtResource("6_e7sx8")
+icon = ExtResource("13_rvd7r")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_fjmko")
+settings_scene_path = "res://Scenes/Menus/settings.tscn"
+canvas_layer = NodePath("..")
 
 [node name="BuyTankTimer" type="Timer" parent="GameManager"]
 wait_time = 4.0
