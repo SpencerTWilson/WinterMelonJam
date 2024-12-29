@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cywnd0r8nh0v5"]
+[gd_scene load_steps=10 format=3 uid="uid://cywnd0r8nh0v5"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sat6m"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://Scenes/Menus/switch_scenes_btn - Copy.gd" id="2_p6j21"]
 [ext_resource type="StyleBox" uid="uid://llmr56kqjddq" path="res://Scenes/Menus/menu_background.tres" id="2_qgkht"]
 [ext_resource type="Script" path="res://Addons/BetterRichTextLabels/better_rich_text_label.gd" id="2_w768j"]
+[ext_resource type="Script" path="res://Scenes/Menus/play_music.gd" id="3_l8urx"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
+[ext_resource type="AudioStream" uid="uid://xcdjugdto0lx" path="res://Assets/Audio/music/melonmusic.mp3" id="4_olrl4"]
 
 [node name="SinglePlayerTitleScreen" type="Control"]
 layout_mode = 3
@@ -25,6 +27,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_qgkht")
+script = ExtResource("3_l8urx")
+music = ExtResource("4_olrl4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -87,14 +87,14 @@ color_ramp = SubResource("GradientTexture1D_j5mpy")
 offsets = PackedFloat32Array(0.527881, 0.988848)
 colors = PackedColorArray(0.89, 0.826662, 0.3471, 1, 0.157688, 0.0840045, 0.00561579, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4i8c"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vmkei"]
 gradient = SubResource("Gradient_qtk35")
 
 [sub_resource type="Curve" id="Curve_sgbyu"]
 _data = [Vector2(0, 0), 0.0, 10.5769, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.997, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_h3tkm"]
+[sub_resource type="CurveTexture" id="CurveTexture_jx0gp"]
 curve = SubResource("Curve_sgbyu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up4rl"]
@@ -106,8 +106,8 @@ angle_max = -45.0
 gravity = Vector3(10, -15, 0)
 scale_min = 0.2
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_h3tkm")
-color_ramp = SubResource("GradientTexture1D_t4i8c")
+scale_curve = SubResource("CurveTexture_jx0gp")
+color_ramp = SubResource("GradientTexture1D_vmkei")
 
 [node name="Card" type="Sprite2D"]
 scale = Vector2(3.9375, 3.75)
@@ -121,7 +121,7 @@ shape = SubResource("RectangleShape2D_jfhdr")
 
 [node name="VFXManager" type="Node2D" parent="." node_paths=PackedStringArray("effects")]
 script = ExtResource("3_2fu8o")
-effects = [NodePath("Dmg"), NodePath("Heal"), NodePath("Buff")]
+effects = [NodePath("Dmg"), NodePath("Heal"), NodePath("Buff"), NodePath("Spd")]
 
 [node name="Dmg" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
@@ -148,6 +148,7 @@ randomness = 1.0
 local_coords = true
 
 [node name="Spd" type="GPUParticles2D" parent="VFXManager"]
+emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_up4rl")
 texture = ExtResource("7_6g401")
