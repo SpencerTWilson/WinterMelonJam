@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cywnd0r8nh0v5"]
+[gd_scene load_steps=11 format=3 uid="uid://cywnd0r8nh0v5"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sat6m"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_w0jkv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/Menus/play_music.gd" id="3_l8urx"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="3_yde8j"]
 [ext_resource type="AudioStream" uid="uid://xcdjugdto0lx" path="res://Assets/Audio/music/melonmusic.mp3" id="4_olrl4"]
+[ext_resource type="Script" path="res://Scenes/Menus/button_sounds.gd" id="5_s0ygf"]
 
 [node name="SinglePlayerTitleScreen" type="Control"]
 layout_mode = 3
@@ -43,6 +44,7 @@ offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+script = ExtResource("5_s0ygf")
 
 [node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
@@ -74,3 +76,7 @@ settings_scene_path = "res://Scenes/Menus/settings.tscn"
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_yde8j")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer" method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="VBoxContainer" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer" method="_on_quit_button_pressed"]

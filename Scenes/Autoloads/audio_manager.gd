@@ -6,6 +6,8 @@ var looping_audio_clips: Dictionary = {}
 
 var current_music: AudioStreamPlayer = null
 
+var button_sound: AudioStream = preload("res://Assets/Audio/SFX/Hit/hit1.ogg")
+
 func _ready():
 	OptionsManager.options_updated.connect(_update_volumes)
 	_update_volumes()

@@ -44,6 +44,9 @@ func _process(_delta: float) -> void:
 	red_gold_display.text = "[right]%d[/right]" % red_team_gold
 	your_gold_display.text = "%d" % your_gold
 	
+	$CanvasLayer/CoinDisplays2/BlueLvl.text = "LVL: %d" % blue_base_lvl
+	$CanvasLayer/CoinDisplays2/RedLvl.text = "[right]LVL: %d[/right]" % red_base_lvl
+	
 	#Calc Team Fight Winning status
 	var furethest_blue_unit = get_furthest_troop(blue_team_spawn_manager)
 	var furethest_red_unit = get_furthest_troop(red_team_spawn_manager)
@@ -67,6 +70,9 @@ func _game_over():
 	#get_tree().paused = true #Commented out cause it's cooler to have stuff still happen in the back but if we experiance bugs uncomment
 	gameover_display.visible = true
 
+var blue_base_lvl: int = 0
+var red_base_lvl: int = 0
+
 func _on_buy_tank_timer_timeout() -> void:
 	var blue_bought_flag: bool = false
 	var red_bought_flag: bool = false
@@ -89,11 +95,15 @@ func _on_buy_tank_timer_timeout() -> void:
 		blue_team_gold -= blue_spawn_speed_upgrade_cost
 		blue_spawn_speed_upgrade_cost += upgrade_cost_increase
 		blue_team_spawn_manager.spawn_rate *= .9
+		blue_base_lvl += 1
 		AudioManager._play_clip(buy_audio,"SFX")
 	if !red_bought_flag and red_team_gold >= red_spawn_speed_upgrade_cost:
 		red_team_gold -= red_spawn_speed_upgrade_cost
 		red_spawn_speed_upgrade_cost += upgrade_cost_increase
 		red_team_spawn_manager.spawn_rate *= .9
+		red_base_lvl += 1
+		
+		
 		AudioManager._play_clip(buy_audio,"SFX")
 
 func collect(who: String):
