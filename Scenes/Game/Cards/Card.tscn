@@ -92,15 +92,11 @@ script = ExtResource("1_m2ibq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_jfhdr")
 
-[node name="VFXManager" type="Node2D" parent="."]
+[node name="VFXManager" type="Node2D" parent="." node_paths=PackedStringArray("effects")]
 script = ExtResource("3_2fu8o")
-effects = {
-"buff": NodePath("Buff"),
-"minus": NodePath("Minus"),
-"plus": NodePath("Plus")
-}
+effects = [NodePath("Dmg"), NodePath("Heal"), NodePath("Buff")]
 
-[node name="Minus" type="GPUParticles2D" parent="VFXManager"]
+[node name="Dmg" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_w05hx")
@@ -108,7 +104,7 @@ texture = ExtResource("3_wlbpl")
 randomness = 1.0
 local_coords = true
 
-[node name="Plus" type="GPUParticles2D" parent="VFXManager"]
+[node name="Heal" type="GPUParticles2D" parent="VFXManager"]
 emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_726t7")

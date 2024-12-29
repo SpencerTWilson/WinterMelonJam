@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 @export var game_manager: GameManager
 @export var hand: CardSlot

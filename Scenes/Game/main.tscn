@@ -346,10 +346,9 @@ script = ExtResource("7_jg3eu")
 hand_spacing = 75.0
 num_cards_allowed = 10
 
-[node name="Deck" type="Sprite2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "hand", "cost_display")]
-position = Vector2(966, 586)
+[node name="Deck" type="Node2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "hand", "cost_display")]
+position = Vector2(1040, 534)
 scale = Vector2(3, 3)
-texture = ExtResource("10_mw5u1")
 script = ExtResource("11_cr341")
 game_manager = NodePath("../../GameManager")
 hand = NodePath("../Hand")
@@ -358,10 +357,6 @@ card_scene = ExtResource("15_dnu7n")
 card_data_file = "res://Scenes/Game/Cards/cards.json"
 denied_sound = ExtResource("12_53t34")
 buy_sound = ExtResource("12_y7kcc")
-
-[node name="PlusSign" type="Sprite2D" parent="CardLayer/Deck"]
-scale = Vector2(0.333334, 0.333334)
-texture = ExtResource("11_flxch")
 
 [node name="Area2D" type="Area2D" parent="CardLayer/Deck"]
 
@@ -557,6 +552,28 @@ bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
+
+[node name="Control" type="TextureRect" parent="GameManager/CanvasLayer"]
+offset_left = 987.0
+offset_top = 481.0
+offset_right = 1097.0
+offset_bottom = 591.0
+texture = ExtResource("10_mw5u1")
+
+[node name="TextureRect" type="TextureRect" parent="GameManager/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 33.0
+offset_right = -35.9
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_flxch")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="BuyTankTimer" type="Timer" parent="GameManager"]
 wait_time = 4.0
