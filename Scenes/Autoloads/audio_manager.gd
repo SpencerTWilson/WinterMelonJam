@@ -15,6 +15,8 @@ func _ready():
 	current_music = AudioStreamPlayer.new()
 	current_music.bus = "Music"
 	add_child(current_music)
+	current_music.process_mode = Node.PROCESS_MODE_ALWAYS
+	current_music.finished.connect(_continue_audio.bind(current_music))
 
 func _process(_delta):
 	for audio_player in audio_clips:
@@ -23,6 +25,7 @@ func _process(_delta):
 			audio_clips.erase(audio_player)
 
 func _continue_audio(player: AudioStreamPlayer):
+	player.play()
 	player.stream_paused = false
 
 func _play_clip(audio_clip: AudioStream, bus: String):
@@ -47,8 +50,9 @@ func _play_clip_loop(audio_clip: AudioStream, bus: String, access_tag: String):
 	new_player.play()
 
 func _stop_clip_loop(access_tag: String):
-	looping_audio_clips[access_tag].queue_free()
-	looping_audio_clips.erase(access_tag)
+	if looping_audio_clips.has(access_tag):
+		looping_audio_clips[access_tag].queue_free()
+		looping_audio_clips.erase(access_tag)
 
 func _play_clip_batch(audio_clip_batch: Array, bus: String):
 	for audio_clip in audio_clip_batch:
