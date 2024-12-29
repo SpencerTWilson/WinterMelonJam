@@ -55,7 +55,7 @@ theme_override_constants/outline_size = 25
 theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
 text = "
-[wave amp=50.0 freq=5.0 connected=1][center][color=red]Counter Strike[/color][/center][/wave]"
+[wave amp=50.0 freq=5.0 connected=1][center][color=red]Polarized[/color][/center][/wave]"
 fit_content = true
 script = ExtResource("2_w768j")
 base_size = 4.0

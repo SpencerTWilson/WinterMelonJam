@@ -51,7 +51,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_sgfbq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
-theme_override_font_sizes/normal_font_size = 74
+theme_override_font_sizes/normal_font_size = 0
 bbcode_enabled = true
 text = "
 [wave amp=50.0 freq=5.0 connected=1][center][color=red]Settings[/color][/center][/wave]"

@@ -19,9 +19,6 @@ var score: int = 0
 @export var units: Array
 
 @export var unit_unlock_costs: Array[int]
-@export var ranged_cost: int
-@export var tank_cost: int
-@export var helecopter_cost: int
 
 @export var buy_audio: AudioStream
 @export var collect_audio: AudioStream

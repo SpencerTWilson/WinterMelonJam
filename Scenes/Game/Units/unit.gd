@@ -59,10 +59,10 @@ func _on_death():
 	#gold
 	var game_manager:GameManager = get_tree().get_first_node_in_group("GameManager")
 	if blue_team: 
-		game_manager.red_team_gold += value
+		game_manager.red_team_gold += value * roundf((1 - (abs(position.x)/838))*10)
 		game_manager.collect("red")
 	else: 
-		game_manager.blue_team_gold += value
+		game_manager.blue_team_gold += value * roundf((1 - (abs(position.x)/838))*10)
 		game_manager.collect("blue")
 	game_manager.your_gold += value
 	game_manager.score += value * 10 * roundf((abs(position.x)/838)*10)

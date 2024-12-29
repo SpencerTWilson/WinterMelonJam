@@ -9,7 +9,7 @@ extends Node2D
 @export_file("*.json") var card_data_file: String
 var card_data: Dictionary
 
-var current_card_cost: int = 5
+var current_card_cost: int = 4
 var card_level: int = 1
 
 @export var denied_sound: AudioStream
@@ -29,7 +29,7 @@ func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 			AudioManager._play_clip(buy_sound, "SFX")
 			summon_card_to_hand()
 			game_manager.your_gold -= current_card_cost
-			current_card_cost += 5
+			current_card_cost += 4
 			cost_display.text = "[center]%d[/center]" % current_card_cost
 		else:
 			AudioManager._play_clip(denied_sound, "SFX")

@@ -350,7 +350,7 @@ hand_spacing = 75.0
 num_cards_allowed = 10
 
 [node name="Deck" type="Node2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "hand", "cost_display")]
-position = Vector2(589, 231)
+position = Vector2(589, 179.445)
 scale = Vector2(3, 3)
 script = ExtResource("11_cr341")
 game_manager = NodePath("../../GameManager")
@@ -378,15 +378,12 @@ red_gold_icon = NodePath("CanvasLayer/CoinDisplays/RedCoinIcon")
 your_gold_icon = NodePath("CanvasLayer/YourCoins/yourCoinIcon")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx"), ExtResource("14_eeesk")]
-unit_unlock_costs = Array[int]([7, 17, 12, 15])
-ranged_cost = 7
-tank_cost = 15
-helecopter_cost = 12
+unit_unlock_costs = Array[int]([35, 85, 60, 75])
 buy_audio = ExtResource("12_y7kcc")
 collect_audio = ExtResource("19_i1m18")
-blue_spawn_speed_upgrade_cost = 14
-red_spawn_speed_upgrade_cost = 14
-upgrade_cost_increase = 6
+blue_spawn_speed_upgrade_cost = 70
+red_spawn_speed_upgrade_cost = 70
+upgrade_cost_increase = 30
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 script = ExtResource("17_p4oq3")
@@ -538,9 +535,9 @@ base_size = 1.75
 
 [node name="Control" type="TextureRect" parent="GameManager/CanvasLayer"]
 offset_left = 536.0
-offset_top = 178.0
+offset_top = 126.445
 offset_right = 646.0
-offset_bottom = 288.0
+offset_bottom = 236.445
 texture = ExtResource("10_mw5u1")
 
 [node name="TextureRect" type="TextureRect" parent="GameManager/CanvasLayer/Control"]
