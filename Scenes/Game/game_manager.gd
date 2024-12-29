@@ -24,11 +24,15 @@ class_name GameManager
 @export var buy_audio: AudioStream
 @export var collect_audio: AudioStream
 
+@export var blue_spawn_speed_upgrade_cost: int
+@export var red_spawn_speed_upgrade_cost: int
+@export var upgrade_cost_increase: int
+
 var blue_team_gold: int = 0
 var red_team_gold: int = 0
 var your_gold: int = 0
 
-var team_winning_value: float
+var team_winning_value: float = 0.5
 
 func _ready() -> void:
 	blue_team_spawn_manager.unlocked_units[units[0]] = null
@@ -49,7 +53,7 @@ func _process(_delta: float) -> void:
 	$CanvasLayer/ColorRect/Blue2.amount_ratio = remap(clampf(1 - team_winning_value, 0.5, 1), 0.5, 1, 0, 1)
 	$CanvasLayer/ColorRect/Red1.amount_ratio = remap(clampf(team_winning_value, 0.5, 1), 0.5, 1, 0, 1)
 	$CanvasLayer/ColorRect/Red2.amount_ratio = remap(clampf(team_winning_value, 0.5, 1), 0.5, 1, 0, 1)
-	$CanvasLayer/ColorRect.material.set_shader_parameter("value",team_winning_value)
+	$CanvasLayer/ColorRect.material.set_shader_parameter("value",lerp($CanvasLayer/ColorRect.material.get_shader_parameter("value"), team_winning_value, 0.10))
 	
 func get_furthest_troop(parent_node: Node2D):
 	var furthest_unit: Node2D = parent_node
@@ -64,15 +68,33 @@ func _game_over():
 	gameover_display.visible = true
 
 func _on_buy_tank_timer_timeout() -> void:
+	var blue_bought_flag: bool = false
+	var red_bought_flag: bool = false
+	
+	#check for more units
 	for i in range(unit_unlock_costs.size()):
 		if blue_team_gold >= unit_unlock_costs[i] and !blue_team_spawn_manager.unlocked_units.has(units[i+1]):
 			blue_team_spawn_manager.unlocked_units[units[i+1]] = null
 			blue_team_gold -= unit_unlock_costs[i]
+			blue_bought_flag = true
 			AudioManager._play_clip(buy_audio,"SFX")
 		if red_team_gold >= unit_unlock_costs[i] and !red_team_spawn_manager.unlocked_units.has(units[i+1]):
 			red_team_spawn_manager.unlocked_units[units[i+1]] = null
 			red_team_gold -= unit_unlock_costs[i]
+			red_bought_flag = true
 			AudioManager._play_clip(buy_audio,"SFX")
+	
+	#if we didn't buy a unit consider spawn speed increase
+	if !blue_bought_flag and blue_team_gold >= blue_spawn_speed_upgrade_cost:
+		blue_team_gold -= blue_spawn_speed_upgrade_cost
+		blue_spawn_speed_upgrade_cost += upgrade_cost_increase
+		blue_team_spawn_manager.spawn_rate *= .9
+		AudioManager._play_clip(buy_audio,"SFX")
+	if !red_bought_flag and red_team_gold >= red_spawn_speed_upgrade_cost:
+		red_team_gold -= red_spawn_speed_upgrade_cost
+		red_spawn_speed_upgrade_cost += upgrade_cost_increase
+		red_team_spawn_manager.spawn_rate *= .9
+		AudioManager._play_clip(buy_audio,"SFX")
 
 func collect(who: String):
 	AudioManager._play_clip(collect_audio, "SFX")

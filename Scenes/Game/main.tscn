@@ -380,12 +380,15 @@ red_gold_icon = NodePath("CanvasLayer/CoinDisplays/RedCoinIcon")
 your_gold_icon = NodePath("CanvasLayer/YourCoins/yourCoinIcon")
 gameover_display = NodePath("CanvasLayer/GameOverPanel")
 units = [ExtResource("2_5fy4v"), ExtResource("4_1jmwn"), ExtResource("12_g6jgc"), ExtResource("13_472fx"), ExtResource("14_eeesk")]
-unit_unlock_costs = Array[int]([7, 17, 12, 15])
+unit_unlock_costs = Array[int]([7, 17, 12])
 ranged_cost = 7
 tank_cost = 15
 helecopter_cost = 12
 buy_audio = ExtResource("12_y7kcc")
 collect_audio = ExtResource("19_i1m18")
+blue_spawn_speed_upgrade_cost = 14
+red_spawn_speed_upgrade_cost = 14
+upgrade_cost_increase = 6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
