@@ -6,7 +6,7 @@ var target: Node2D
 func _ready() -> void:
 	$Sprite2D.look_at(target.global_position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if target == null:
 		queue_free()
 		return

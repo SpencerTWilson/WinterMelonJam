@@ -1,5 +1,5 @@
 The List of resources made outside the game jam being used are:
-	Some Rudementary Engine Tools
+	Some Rudementary Engine Tool Scripts
 		Better Text Sizing (Created by us)
 		Simple Titlescreen layout (Created by us)
 		Audio Manager (Created by us)

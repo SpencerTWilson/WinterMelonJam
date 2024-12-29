@@ -399,29 +399,25 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Blue1" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
-emitting = false
-amount = 200
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_m7ylv")
 texture = SubResource("GradientTexture2D_atst3")
 
 [node name="Blue2" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(0, 648)
-emitting = false
-amount = 200
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_m7ylv")
 texture = SubResource("GradientTexture2D_atst3")
 
-[node name="Blue3" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+[node name="Red1" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(1152, 0)
-emitting = false
-amount = 200
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_txhvg")
 texture = SubResource("GradientTexture2D_atst3")
 
-[node name="Blue4" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
+[node name="Red2" type="GPUParticles2D" parent="GameManager/CanvasLayer/ColorRect"]
 position = Vector2(1152, 648)
-emitting = false
-amount = 200
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_txhvg")
 texture = SubResource("GradientTexture2D_atst3")
 
