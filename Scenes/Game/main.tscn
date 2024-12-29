@@ -595,9 +595,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 335.0
-offset_top = 168.0
+offset_top = 146.0
 offset_right = -335.0
-offset_bottom = -278.0
+offset_bottom = -190.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -615,6 +615,20 @@ text = "
 fit_content = true
 script = ExtResource("6_txq1v")
 
+[node name="ScoreText" type="RichTextLabel" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_upmjw")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "
+[center]Score 11100101[/center]"
+fit_content = true
+script = ExtResource("6_txq1v")
+base_size = 1.5
+
 [node name="RestartButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
@@ -630,7 +644,11 @@ script = ExtResource("11_uidoo")
 wait_time = 4.0
 autostart = true
 
+[node name="Timer" type="Timer" parent="GameManager"]
+autostart = true
+
 [connection signal="input_event" from="CardLayer/Deck/Area2D" to="CardLayer/Deck" method="_on_area_2d_input_event"]
 [connection signal="pressed" from="GameManager/CanvasLayer/SettingsButton" to="GameManager/CanvasLayer" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="GameManager/CanvasLayer/RestartButton" to="GameManager/CanvasLayer" method="_on_restart_button_pressed"]
 [connection signal="timeout" from="GameManager/BuyTankTimer" to="GameManager" method="_on_buy_tank_timer_timeout"]
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

@@ -65,6 +65,7 @@ func _on_death():
 		game_manager.blue_team_gold += value
 		game_manager.collect("blue")
 	game_manager.your_gold += value
+	game_manager.score += value * 10 * roundf((abs(position.x)/838)*10)
 	game_manager.collect("you")
 	#anim
 	AudioManager._play_random_clip(death_sounds, "SFX")

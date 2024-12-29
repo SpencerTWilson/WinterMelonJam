@@ -1,6 +1,8 @@
 extends Node
 class_name GameManager
 
+var score: int = 0
+
 @export var blue_team_spawn_manager: Node
 @export var red_team_spawn_manager: Node
 
@@ -68,6 +70,7 @@ func get_furthest_troop(parent_node: Node2D):
 	
 func _game_over():
 	#get_tree().paused = true #Commented out cause it's cooler to have stuff still happen in the back but if we experiance bugs uncomment
+	$CanvasLayer/GameOverPanel/VBoxContainer/ScoreText.text = "\n[center]Score %d[/center]" % score
 	gameover_display.visible = true
 
 var blue_base_lvl: int = 0
@@ -115,3 +118,7 @@ func collect(who: String):
 			blue_gold_icon.collect()
 		"you":
 			your_gold_icon.collect()
+
+
+func _on_timer_timeout() -> void:
+	score += 100
