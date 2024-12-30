@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpuc0mfplj53h"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Buildings/unit_indicator.gd" id="1_wcnb1"]
+[ext_resource type="Script" path="res://Scenes/Game/team_text_rect.gd" id="2_hb24k"]
+[ext_resource type="Texture2D" uid="uid://bwwt3p6mxn43a" path="res://Assets/Sprites/KennyBattleTiles/tile_0197.png" id="2_rl4j8"]
+[ext_resource type="Texture2D" uid="uid://cau3yixo0oc18" path="res://Assets/Sprites/KennyBattleTiles/tile_0143.png" id="4_70qf7"]
+[ext_resource type="Texture2D" uid="uid://b1fcjor51wlpx" path="res://Assets/Sprites/KennyBattleTiles/tile_0161.png" id="5_in5tu"]
+[ext_resource type="Texture2D" uid="uid://dm8ltoo2o3i3o" path="res://Assets/Sprites/KennyBattleTiles/tile_0142.png" id="6_xdxlu"]
+[ext_resource type="Texture2D" uid="uid://bc3ntjou8hb8e" path="res://Assets/Sprites/KennyBattleTiles/tile_0160.png" id="7_rv3sy"]
+[ext_resource type="Texture2D" uid="uid://cjyyrcvqubfgd" path="res://Assets/Sprites/KennyBattleTiles/tile_0137.png" id="8_gwv1m"]
+[ext_resource type="Texture2D" uid="uid://3rbi08yw630m" path="res://Assets/Sprites/KennyBattleTiles/tile_0155.png" id="9_vfa1c"]
+[ext_resource type="Texture2D" uid="uid://cabfu54vgr243" path="res://Assets/Sprites/KennyBattleTiles/tile_0135.png" id="10_tedfp"]
+[ext_resource type="Texture2D" uid="uid://cxnaw4e2jxbg2" path="res://Assets/Sprites/KennyBattleTiles/tile_0153.png" id="11_7yi8q"]
+[ext_resource type="Texture2D" uid="uid://drelqui3s4inr" path="res://Assets/Sprites/KennyBattleTiles/tile_0134.png" id="12_ppdm6"]
+[ext_resource type="Texture2D" uid="uid://c274mfkooy4xu" path="res://Assets/Sprites/KennyBattleTiles/tile_0152.png" id="13_in1qu"]
+
+[node name="UnitIndicator" type="GridContainer" node_paths=PackedStringArray("unit_pics")]
+anchors_preset = -1
+anchor_left = 0.131
+anchor_top = 0.444
+anchor_right = 0.18
+anchor_bottom = 0.506
+offset_left = 0.0879822
+offset_top = 0.287964
+offset_right = -0.360016
+offset_bottom = 0.111969
+columns = 3
+script = ExtResource("1_wcnb1")
+unit_pics = [NodePath("MeleeUnit"), NodePath("RangedUnit"), NodePath("Tank"), NodePath("Helicopter"), NodePath("Anti-Air")]
+
+[node name="MeleeUnit" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl4j8")
+script = ExtResource("2_hb24k")
+blue_team_texture = ExtResource("4_70qf7")
+red_team_texture = ExtResource("5_in5tu")
+
+[node name="RangedUnit" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl4j8")
+script = ExtResource("2_hb24k")
+blue_team_texture = ExtResource("6_xdxlu")
+red_team_texture = ExtResource("7_rv3sy")
+
+[node name="Helicopter" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl4j8")
+script = ExtResource("2_hb24k")
+blue_team_texture = ExtResource("8_gwv1m")
+red_team_texture = ExtResource("9_vfa1c")
+
+[node name="Anti-Air" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl4j8")
+script = ExtResource("2_hb24k")
+blue_team_texture = ExtResource("10_tedfp")
+red_team_texture = ExtResource("11_7yi8q")
+
+[node name="Tank" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl4j8")
+script = ExtResource("2_hb24k")
+blue_team_texture = ExtResource("12_ppdm6")
+red_team_texture = ExtResource("13_in1qu")

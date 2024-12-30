@@ -85,13 +85,17 @@ func _on_buy_tank_timer_timeout() -> void:
 			blue_team_spawn_manager.unlocked_units[units[i+1]] = null
 			blue_team_gold -= unit_unlock_costs[i]
 			blue_bought_flag = true
+			$CanvasLayer/BlueUnitUnlocks.units_unlocked[i+1] = true
 			AudioManager._play_clip(buy_audio,"SFX")
 		if red_team_gold >= unit_unlock_costs[i] and !red_team_spawn_manager.unlocked_units.has(units[i+1]):
 			red_team_spawn_manager.unlocked_units[units[i+1]] = null
 			red_team_gold -= unit_unlock_costs[i]
 			red_bought_flag = true
+			$CanvasLayer/RedUnitUnlocks.units_unlocked[i+1] = true
 			AudioManager._play_clip(buy_audio,"SFX")
-	
+		$CanvasLayer/RedUnitUnlocks._update()
+		$CanvasLayer/BlueUnitUnlocks._update()
+		
 	#if we didn't buy a unit consider spawn speed increase
 	if !blue_bought_flag and blue_team_gold >= blue_spawn_speed_upgrade_cost:
 		blue_team_gold -= blue_spawn_speed_upgrade_cost
