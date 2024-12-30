@@ -18,6 +18,9 @@ func _ready() -> void:
 	super._ready()
 	modulate.a = 0
 	spawn_anim_timer.timeout.connect(_finish_fade_in)
+	var game_manager:GameManager = get_tree().get_first_node_in_group("GameManager")
+	game_manager.your_gold += value
+	game_manager.collect("you")
 	if !blue_team:
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, true)
@@ -64,9 +67,7 @@ func _on_death():
 	else: 
 		game_manager.blue_team_gold += value * roundf((1 - (abs(position.x)/838))*10)
 		game_manager.collect("blue")
-	game_manager.your_gold += value
 	game_manager.score += value * 10 * roundf((abs(position.x)/838)*10)
-	game_manager.collect("you")
 	#anim
 	AudioManager._play_random_clip(death_sounds, "SFX")
 	death_anim_timer = get_tree().create_timer(0.5)
