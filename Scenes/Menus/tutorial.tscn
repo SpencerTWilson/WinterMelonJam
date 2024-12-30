@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bemtmsx13q4ft"]
+[gd_scene load_steps=43 format=3 uid="uid://bemtmsx13q4ft"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_bey18"]
 [ext_resource type="StyleBox" uid="uid://llmr56kqjddq" path="res://Scenes/Menus/menu_background.tres" id="2_8fv1w"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cau3yixo0oc18" path="res://Assets/Sprites/KennyBattleTiles/tile_0143.png" id="12_xjchm"]
 [ext_resource type="Texture2D" uid="uid://c6ur85y4qkc5b" path="res://Assets/Sprites/color_red_empty.png" id="13_sqkh2"]
 [ext_resource type="Texture2D" uid="uid://bacluyhllpbaq" path="res://Assets/Sprites/color_back.png" id="14_peusd"]
+[ext_resource type="Texture2D" uid="uid://hv5yxh0iydtv" path="res://Assets/Sprites/KennyBattleTiles/bomb.png" id="15_6wexc"]
 [ext_resource type="Texture2D" uid="uid://b4goe70w08edw" path="res://Assets/Sprites/KennyBattleTiles/tile_0041.png" id="16_ou8xo"]
 [ext_resource type="Texture2D" uid="uid://pf02n5x0p6si" path="res://Assets/Sprites/KennyBattleTiles/tile_0043.png" id="17_0802l"]
 [ext_resource type="Texture2D" uid="uid://dpfs48hbytdvs" path="res://Assets/Sprites/KennyBattleTiles/tile_0016.png" id="18_e1wvp"]
@@ -156,7 +157,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 75
 alignment = 1
 script = ExtResource("6_r26eu")
-images = Array[Texture2D]([ExtResource("7_pv7p0"), ExtResource("7_ckv4h"), ExtResource("9_ya7op"), ExtResource("10_n1kjx"), ExtResource("11_2ny3p"), ExtResource("12_xjchm"), ExtResource("7_pv7p0"), ExtResource("13_sqkh2"), ExtResource("7_pv7p0"), ExtResource("14_peusd"), ExtResource("8_lxqib"), ExtResource("16_ou8xo"), ExtResource("17_0802l"), ExtResource("18_e1wvp"), ExtResource("19_hcs10"), ExtResource("13_sqkh2"), ExtResource("20_eh8p3"), ExtResource("21_kevwj"), ExtResource("22_uwenh"), ExtResource("20_gqjpm"), ExtResource("21_603rg"), ExtResource("22_iues6"), ExtResource("23_nqjm4"), ExtResource("24_wqbwm")])
+images = Array[Texture2D]([ExtResource("7_pv7p0"), ExtResource("7_ckv4h"), ExtResource("9_ya7op"), ExtResource("10_n1kjx"), ExtResource("11_2ny3p"), ExtResource("12_xjchm"), ExtResource("7_pv7p0"), ExtResource("13_sqkh2"), ExtResource("7_pv7p0"), ExtResource("14_peusd"), ExtResource("15_6wexc"), ExtResource("8_lxqib"), ExtResource("16_ou8xo"), ExtResource("17_0802l"), ExtResource("18_e1wvp"), ExtResource("19_hcs10"), ExtResource("13_sqkh2"), ExtResource("20_eh8p3"), ExtResource("21_kevwj"), ExtResource("22_uwenh"), ExtResource("20_gqjpm"), ExtResource("21_603rg"), ExtResource("22_iues6"), ExtResource("23_nqjm4"), ExtResource("24_wqbwm")])
 
 [node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -179,7 +180,7 @@ stretch_mode = 4
 [node name="Description" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[center]
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.

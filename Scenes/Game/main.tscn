@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=52 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://8r78k18kmqoi" path="res://Scenes/Game/Abilities/bomb.tscn" id="12_na1nt"]
 [ext_resource type="AudioStream" uid="uid://mu8jtf12h533" path="res://Assets/Audio/SFX/Explosion/coins.ogg" id="12_y7kcc"]
 [ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
-[ext_resource type="AudioStream" uid="uid://c6x7sudaoa2ym" path="res://Assets/Audio/SFX/Explosion/explode3.ogg" id="13_km5ku"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="PackedScene" uid="uid://bj48n17yfvhwn" path="res://Scenes/Game/Units/anti_air.tscn" id="14_eeesk"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
@@ -35,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dxm6425bqev7l" path="res://Assets/Sprites/tile_0180.png" id="24_etiwo"]
 [ext_resource type="Texture2D" uid="uid://drohqbshslnlb" path="res://Assets/Sprites/tile_0210.png" id="27_bu5lh"]
 [ext_resource type="Texture2D" uid="uid://hv5yxh0iydtv" path="res://Assets/Sprites/KennyBattleTiles/bomb.png" id="29_tffp2"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Buildings/unit_indicator.tscn" id="32_wslk8"]
+[ext_resource type="PackedScene" uid="uid://bpuc0mfplj53h" path="res://Scenes/Game/Buildings/unit_indicator.tscn" id="32_wslk8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
 texture = ExtResource("1_jc3p4")
@@ -378,7 +377,8 @@ scale = Vector2(3, 3)
 script = ExtResource("11_hxygy")
 game_manager = NodePath("../../GameManager")
 cost_display = NodePath("../../GameManager/CanvasLayer/BombVisuals/BombCost")
-current_card_cost = 50
+bomb_scene = ExtResource("12_na1nt")
+current_bomb_cost = 100
 denied_sound = ExtResource("12_53t34")
 buy_sound = ExtResource("12_y7kcc")
 
@@ -386,10 +386,6 @@ buy_sound = ExtResource("12_y7kcc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardLayer/BoardWipe/Area2D"]
 shape = SubResource("RectangleShape2D_s2ad4")
-
-[node name="Bomb" parent="CardLayer/BoardWipe" instance=ExtResource("12_na1nt")]
-position = Vector2(0, -127.333)
-boom_sound = ExtResource("13_km5ku")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager", "blue_gold_display", "red_gold_display", "your_gold_display", "blue_gold_icon", "red_gold_icon", "your_gold_icon", "gameover_display") groups=["GameManager"]]
 script = ExtResource("3_0y2yv")
@@ -463,7 +459,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -474,7 +470,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -503,7 +499,7 @@ size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 39
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 fit_content = true
 script = ExtResource("6_txq1v")
@@ -565,7 +561,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "0"
 fit_content = true
@@ -577,7 +573,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "0"
 fit_content = true
@@ -621,7 +617,7 @@ size_flags_horizontal = 3
 theme = ExtResource("6_e7sx8")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
 fit_content = true
@@ -641,7 +637,7 @@ size_flags_horizontal = 3
 theme = ExtResource("6_e7sx8")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "0"
 fit_content = true
@@ -685,7 +681,7 @@ size_flags_horizontal = 3
 theme = ExtResource("6_e7sx8")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
 fit_content = true
@@ -735,7 +731,7 @@ size_flags_vertical = 3
 theme = ExtResource("9_upmjw")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 text = "
 [shake rate=20.0 level=5 connected=1][color=darkred][center]Game Over[/center][/color][/shake]"
@@ -748,7 +744,7 @@ size_flags_vertical = 3
 theme = ExtResource("9_upmjw")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "
 [center]Score 11100101[/center]"

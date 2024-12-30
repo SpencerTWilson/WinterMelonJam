@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://8r78k18kmqoi"]
+[gd_scene load_steps=21 format=3 uid="uid://8r78k18kmqoi"]
 
 [ext_resource type="Texture2D" uid="uid://hv5yxh0iydtv" path="res://Assets/Sprites/KennyBattleTiles/bomb.png" id="1_wueak"]
 [ext_resource type="Script" path="res://Scenes/Game/Abilities/bomb.gd" id="2_jgx8e"]
+[ext_resource type="AudioStream" uid="uid://c6x7sudaoa2ym" path="res://Assets/Audio/SFX/Explosion/explode3.ogg" id="3_rsqfj"]
 [ext_resource type="Shader" path="res://Scenes/Game/Abilities/bomb.gdshader" id="3_utsw3"]
 [ext_resource type="Texture2D" uid="uid://c6f5kp03wg2hb" path="res://Assets/Retro Impact Effect Pack 4 A.png" id="4_tsyj4"]
 
@@ -113,9 +114,10 @@ position = Vector2(0, -127)
 scale = Vector2(2, 2)
 texture = ExtResource("1_wueak")
 script = ExtResource("2_jgx8e")
+boom_sound = ExtResource("3_rsqfj")
 
 [node name="BoomTimer" type="Timer" parent="."]
-wait_time = 0.9
+wait_time = 0.86
 one_shot = true
 autostart = true
 
@@ -139,8 +141,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_v6tyn")
-frame_progress = 0.625167
+frame_progress = 0.384247
 
 [connection signal="timeout" from="BoomTimer" to="." method="_on_boom_timer_timeout"]
