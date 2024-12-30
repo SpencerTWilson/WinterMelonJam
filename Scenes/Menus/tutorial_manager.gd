@@ -15,7 +15,7 @@ var text: Array[String] = [
 	"[center]You need them to keep fighting to make more profit.\nSo don't let either side win![/center]",
 	"[center]You can buy more cards from the grey deck.[/center]",
 	"[center]The bases will spend their money on upgrades such as;\nunlocking new units or upgrading their recruitment times.[/center]",
-	"[center]They earn more money the closer to the enemy base they make the kill.[/center]",
+	"[center]They earn more money the closer to the enemy base that they make the kill.[/center]",
 	"[center]You earn more score for how far from the center the kill is made.[/center]",
 	"[center]You also get 100 score per second of continous fighting.[/center]",
 	"[center]Good Luck! Continue reading for unit and card stats![/center]",
