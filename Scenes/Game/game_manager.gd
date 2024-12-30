@@ -122,6 +122,13 @@ func collect(who: String):
 		"you":
 			your_gold_icon.collect()
 
+func _bomb():
+	for child in blue_team_spawn_manager.get_children():
+		if child is Unit:
+			child._damage(10000)
+	for child in red_team_spawn_manager.get_children():
+		if child is Unit:
+			child._damage(10000)
 
 func _on_timer_timeout() -> void:
 	score += 100

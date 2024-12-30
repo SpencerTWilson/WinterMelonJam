@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8r78k18kmqoi"]
+
+[ext_resource type="Texture2D" uid="uid://hv5yxh0iydtv" path="res://Assets/Sprites/KennyBattleTiles/bomb.png" id="1_wueak"]
+[ext_resource type="Script" path="res://Scenes/Game/Abilities/bomb.gd" id="2_jgx8e"]
+
+[node name="Bomb" type="Sprite2D"]
+position = Vector2(0, -127)
+scale = Vector2(2, 2)
+texture = ExtResource("1_wueak")
+script = ExtResource("2_jgx8e")
+
+[node name="BoomTimer" type="Timer" parent="."]
+wait_time = 0.9
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BoomTimer" to="." method="_on_boom_timer_timeout"]

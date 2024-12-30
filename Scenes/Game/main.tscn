@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=53 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -16,11 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://bacluyhllpbaq" path="res://Assets/Sprites/color_back.png" id="10_mw5u1"]
 [ext_resource type="Script" path="res://Scenes/Game/Cards/deck.gd" id="11_cr341"]
 [ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="11_flxch"]
+[ext_resource type="Script" path="res://Scenes/Game/board_wipe.gd" id="11_hxygy"]
 [ext_resource type="Script" path="res://Scenes/Menus/quit_btn.gd" id="11_uidoo"]
 [ext_resource type="AudioStream" uid="uid://d5cl2t26y5yi" path="res://Assets/Audio/SFX/Explosion/wrong.ogg" id="12_53t34"]
 [ext_resource type="PackedScene" uid="uid://ddtsmm3xyhtqt" path="res://Scenes/Game/Units/tank.tscn" id="12_g6jgc"]
+[ext_resource type="PackedScene" uid="uid://8r78k18kmqoi" path="res://Scenes/Game/Abilities/bomb.tscn" id="12_na1nt"]
 [ext_resource type="AudioStream" uid="uid://mu8jtf12h533" path="res://Assets/Audio/SFX/Explosion/coins.ogg" id="12_y7kcc"]
 [ext_resource type="PackedScene" uid="uid://cxkyu6lbqr7x2" path="res://Scenes/Game/Units/helecopter.tscn" id="13_472fx"]
+[ext_resource type="AudioStream" uid="uid://c6x7sudaoa2ym" path="res://Assets/Audio/SFX/Explosion/explode3.ogg" id="13_km5ku"]
 [ext_resource type="Texture2D" uid="uid://dq8127fcc3fpv" path="res://Assets/Sprites/tile_0132.png" id="13_rvd7r"]
 [ext_resource type="PackedScene" uid="uid://bj48n17yfvhwn" path="res://Scenes/Game/Units/anti_air.tscn" id="14_eeesk"]
 [ext_resource type="Script" path="res://Scenes/Menus/settings_button.gd" id="14_fjmko"]
@@ -31,6 +34,7 @@
 [ext_resource type="Shader" path="res://shaders/winner_overlay.gdshader" id="20_0y3jf"]
 [ext_resource type="Texture2D" uid="uid://dxm6425bqev7l" path="res://Assets/Sprites/tile_0180.png" id="24_etiwo"]
 [ext_resource type="Texture2D" uid="uid://drohqbshslnlb" path="res://Assets/Sprites/tile_0210.png" id="27_bu5lh"]
+[ext_resource type="Texture2D" uid="uid://hv5yxh0iydtv" path="res://Assets/Sprites/KennyBattleTiles/bomb.png" id="29_tffp2"]
 [ext_resource type="PackedScene" uid="uid://bpuc0mfplj53h" path="res://Scenes/Game/Buildings/unit_indicator.tscn" id="32_wslk8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
@@ -368,6 +372,25 @@ buy_sound = ExtResource("12_y7kcc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardLayer/Deck/Area2D"]
 shape = SubResource("RectangleShape2D_s2ad4")
 
+[node name="BoardWipe" type="Node2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "cost_display")]
+position = Vector2(582, 275)
+scale = Vector2(3, 3)
+script = ExtResource("11_hxygy")
+game_manager = NodePath("../../GameManager")
+cost_display = NodePath("../../GameManager/CanvasLayer/BombVisuals/BombCost")
+current_card_cost = 50
+denied_sound = ExtResource("12_53t34")
+buy_sound = ExtResource("12_y7kcc")
+
+[node name="Area2D" type="Area2D" parent="CardLayer/BoardWipe"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardLayer/BoardWipe/Area2D"]
+shape = SubResource("RectangleShape2D_s2ad4")
+
+[node name="Bomb" parent="CardLayer/BoardWipe" instance=ExtResource("12_na1nt")]
+position = Vector2(0, -127.333)
+boom_sound = ExtResource("13_km5ku")
+
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("blue_team_spawn_manager", "red_team_spawn_manager", "blue_gold_display", "red_gold_display", "your_gold_display", "blue_gold_icon", "red_gold_icon", "your_gold_icon", "gameover_display") groups=["GameManager"]]
 script = ExtResource("3_0y2yv")
 blue_team_spawn_manager = NodePath("../BlueCapital/TeamSpawnManager")
@@ -625,6 +648,63 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
 
+[node name="BombVisuals" type="TextureRect" parent="GameManager/CanvasLayer"]
+offset_left = 529.0
+offset_top = 222.0
+offset_right = 639.0
+offset_bottom = 332.0
+texture = ExtResource("10_mw5u1")
+
+[node name="TextureRect" type="TextureRect" parent="GameManager/CanvasLayer/BombVisuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("29_tffp2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BombCost" type="RichTextLabel" parent="GameManager/CanvasLayer/BombVisuals"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.793
+anchor_right = 0.87
+anchor_bottom = 0.84
+offset_left = -296.1
+offset_top = -76.23
+offset_right = -73.7
+offset_bottom = 4.60001
+size_flags_horizontal = 3
+theme = ExtResource("6_e7sx8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "5"
+fit_content = true
+script = ExtResource("6_txq1v")
+base_size = 1.75
+
+[node name="BlueUnitUnlocks" parent="GameManager/CanvasLayer" instance=ExtResource("32_wslk8")]
+blue_team = true
+
+[node name="RedUnitUnlocks" parent="GameManager/CanvasLayer" instance=ExtResource("32_wslk8")]
+anchor_left = 0.811
+anchor_top = 0.443
+anchor_right = 0.859
+anchor_bottom = 0.505
+offset_left = -0.272034
+offset_top = -0.0640259
+offset_right = 0.431946
+offset_bottom = -0.23999
+
 [node name="GameOverPanel" type="Panel" parent="GameManager/CanvasLayer"]
 process_mode = 3
 visible = false
@@ -694,19 +774,6 @@ layout_mode = 2
 text = "Quit"
 script = ExtResource("11_uidoo")
 
-[node name="BlueUnitUnlocks" parent="GameManager/CanvasLayer" instance=ExtResource("32_wslk8")]
-blue_team = true
-
-[node name="RedUnitUnlocks" parent="GameManager/CanvasLayer" instance=ExtResource("32_wslk8")]
-anchor_left = 0.811
-anchor_top = 0.443
-anchor_right = 0.859
-anchor_bottom = 0.505
-offset_left = -0.272034
-offset_top = -0.0640259
-offset_right = 0.431946
-offset_bottom = -0.23999
-
 [node name="BuyTankTimer" type="Timer" parent="GameManager"]
 wait_time = 4.0
 autostart = true
@@ -715,6 +782,7 @@ autostart = true
 autostart = true
 
 [connection signal="input_event" from="CardLayer/Deck/Area2D" to="CardLayer/Deck" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CardLayer/BoardWipe/Area2D" to="CardLayer/BoardWipe" method="_on_area_2d_input_event"]
 [connection signal="pressed" from="GameManager/CanvasLayer/SettingsButton" to="GameManager/CanvasLayer" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="GameManager/CanvasLayer/TutorialButton" to="GameManager/CanvasLayer" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="GameManager/CanvasLayer/RestartButton" to="GameManager/CanvasLayer" method="_on_restart_button_pressed"]
