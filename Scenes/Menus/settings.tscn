@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlgqgv0hcr32t"]
+[gd_scene load_steps=23 format=3 uid="uid://dlgqgv0hcr32t"]
 
 [ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_sanry"]
 [ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="1_sgfbq"]
@@ -10,6 +10,76 @@
 [ext_resource type="AudioStream" uid="uid://biyqluepm7ord" path="res://Assets/Audio/SFX/Hit/hit1.ogg" id="5_1yakw"]
 [ext_resource type="AudioStream" uid="uid://cwxbrubtp6l3e" path="res://Assets/Audio/SFX/Hit/hit2.ogg" id="6_iqkea"]
 [ext_resource type="AudioStream" uid="uid://cj6fdfibg2dk" path="res://Assets/Audio/SFX/Hit/hit3.ogg" id="7_aa6iw"]
+
+[sub_resource type="Gradient" id="Gradient_afatb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.698885)
+colors = PackedColorArray(0.330727, 0.482489, 0.844414, 1, 0.375171, 0.68652, 0.864198, 1, 0.428022, 0.92915, 0.887725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vb2kj"]
+gradient = SubResource("Gradient_afatb")
+
+[sub_resource type="Curve" id="Curve_ahrrm"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_boudq"]
+curve = SubResource("Curve_ahrrm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nowl2"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_boudq")
+color_initial_ramp = SubResource("GradientTexture1D_vb2kj")
+
+[sub_resource type="Gradient" id="Gradient_lwwwy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6awd4"]
+gradient = SubResource("Gradient_lwwwy")
+
+[sub_resource type="Gradient" id="Gradient_j1dfm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.695167)
+colors = PackedColorArray(1, 0.370789, 0.366532, 1, 0.89013, 0.429475, 0.64709, 1, 1, 0.806884, 0.933752, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sop25"]
+gradient = SubResource("Gradient_j1dfm")
+
+[sub_resource type="Curve" id="Curve_dg2ek"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_skaah"]
+curve = SubResource("Curve_dg2ek")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3igs"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_skaah")
+color_initial_ramp = SubResource("GradientTexture1D_sop25")
 
 [node name="SettingsScreen" type="Control"]
 process_mode = 3
@@ -51,7 +121,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_sgfbq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
-theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
 text = "
 [wave amp=50.0 freq=5.0 connected=1][center][color=red]Settings[/color][/center][/wave]"
@@ -112,5 +182,32 @@ vertical_alignment = 1
 layout_mode = 2
 volume_type = "UI"
 sound_to_play = ExtResource("5_1yakw")
+
+[node name="Blue1" type="GPUParticles2D" parent="."]
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_nowl2")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Blue2" type="GPUParticles2D" parent="."]
+position = Vector2(0, 648)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_nowl2")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Red1" type="GPUParticles2D" parent="."]
+position = Vector2(1152, 0)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_p3igs")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Red2" type="GPUParticles2D" parent="."]
+position = Vector2(1152, 648)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_p3igs")
+texture = SubResource("GradientTexture2D_6awd4")
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="VBoxContainer" method="_on_back_button_pressed"]

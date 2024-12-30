@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cum2qxysr7tp0"]
+[gd_scene load_steps=48 format=4 uid="uid://cum2qxysr7tp0"]
 
 [ext_resource type="PackedScene" uid="uid://j7g4fkbkniyr" path="res://Scenes/Game/Buildings/capital.tscn" id="1_11a02"]
 [ext_resource type="Texture2D" uid="uid://dim6rhb8jd803" path="res://Assets/Sprites/KennyBattleTiles/tilemap_packed.png" id="1_jc3p4"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/button_sounds_3.gd" id="17_p4oq3"]
 [ext_resource type="AudioStream" uid="uid://b2we1h3hxsvrc" path="res://Assets/Audio/SFX/Explosion/coin.ogg" id="19_i1m18"]
 [ext_resource type="Shader" path="res://shaders/winner_overlay.gdshader" id="20_0y3jf"]
+[ext_resource type="Texture2D" uid="uid://dxm6425bqev7l" path="res://Assets/Sprites/tile_0180.png" id="24_etiwo"]
 [ext_resource type="Texture2D" uid="uid://drohqbshslnlb" path="res://Assets/Sprites/tile_0210.png" id="27_bu5lh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6adm"]
@@ -249,14 +250,14 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.375465, 0.698885)
 colors = PackedColorArray(0.330727, 0.482489, 0.844414, 1, 0.375171, 0.68652, 0.864198, 1, 0.428022, 0.92915, 0.887725, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2mjgy"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xcn50"]
 gradient = SubResource("Gradient_jxrjg")
 
 [sub_resource type="Curve" id="Curve_h0d1c"]
 _data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_t056o"]
+[sub_resource type="CurveTexture" id="CurveTexture_08evo"]
 curve = SubResource("Curve_h0d1c")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7ylv"]
@@ -273,28 +274,28 @@ radial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.25
-scale_curve = SubResource("CurveTexture_t056o")
-color_initial_ramp = SubResource("GradientTexture1D_2mjgy")
+scale_curve = SubResource("CurveTexture_08evo")
+color_initial_ramp = SubResource("GradientTexture1D_xcn50")
 
-[sub_resource type="Gradient" id="Gradient_4lgxn"]
+[sub_resource type="Gradient" id="Gradient_464m3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_atst3"]
-gradient = SubResource("Gradient_4lgxn")
+gradient = SubResource("Gradient_464m3")
 
 [sub_resource type="Gradient" id="Gradient_k3yf4"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.375465, 0.695167)
 colors = PackedColorArray(1, 0.370789, 0.366532, 1, 0.89013, 0.429475, 0.64709, 1, 1, 0.806884, 0.933752, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ony5o"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cnayh"]
 gradient = SubResource("Gradient_k3yf4")
 
 [sub_resource type="Curve" id="Curve_yyxk3"]
 _data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_yahja"]
+[sub_resource type="CurveTexture" id="CurveTexture_jnik2"]
 curve = SubResource("Curve_yyxk3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_txhvg"]
@@ -311,8 +312,8 @@ radial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.25
-scale_curve = SubResource("CurveTexture_yahja")
-color_initial_ramp = SubResource("GradientTexture1D_ony5o")
+scale_curve = SubResource("CurveTexture_jnik2")
+color_initial_ramp = SubResource("GradientTexture1D_cnayh")
 
 [node name="Main" type="Node2D"]
 
@@ -350,12 +351,12 @@ hand_spacing = 75.0
 num_cards_allowed = 10
 
 [node name="Deck" type="Node2D" parent="CardLayer" node_paths=PackedStringArray("game_manager", "hand", "cost_display")]
-position = Vector2(589, 179.445)
+position = Vector2(1057, 560)
 scale = Vector2(3, 3)
 script = ExtResource("11_cr341")
 game_manager = NodePath("../../GameManager")
 hand = NodePath("../Hand")
-cost_display = NodePath("../../GameManager/CanvasLayer/Control/CardCost")
+cost_display = NodePath("../../GameManager/CanvasLayer/DeckVisuals/CardCost")
 card_scene = ExtResource("15_dnu7n")
 card_data_file = "res://Scenes/Game/Cards/cards.json"
 denied_sound = ExtResource("12_53t34")
@@ -488,6 +489,19 @@ script = ExtResource("14_fjmko")
 settings_scene_path = "res://Scenes/Menus/settings.tscn"
 canvas_layer = NodePath("..")
 
+[node name="TutorialButton" type="Button" parent="GameManager/CanvasLayer" node_paths=PackedStringArray("canvas_layer")]
+offset_left = 53.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 45.0
+theme = ExtResource("6_e7sx8")
+icon = ExtResource("24_etiwo")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_fjmko")
+settings_scene_path = "res://Scenes/Menus/tutorial.tscn"
+canvas_layer = NodePath("..")
+
 [node name="RestartButton" type="Button" parent="GameManager/CanvasLayer"]
 offset_left = 1106.0
 offset_top = 8.0
@@ -533,14 +547,14 @@ fit_content = true
 script = ExtResource("6_txq1v")
 base_size = 1.75
 
-[node name="Control" type="TextureRect" parent="GameManager/CanvasLayer"]
-offset_left = 536.0
-offset_top = 126.445
-offset_right = 646.0
-offset_bottom = 236.445
+[node name="DeckVisuals" type="TextureRect" parent="GameManager/CanvasLayer"]
+offset_left = 1004.0
+offset_top = 507.0
+offset_right = 1114.0
+offset_bottom = 617.0
 texture = ExtResource("10_mw5u1")
 
-[node name="TextureRect" type="TextureRect" parent="GameManager/CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="GameManager/CanvasLayer/DeckVisuals"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -555,17 +569,17 @@ texture = ExtResource("11_flxch")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CardCost" type="RichTextLabel" parent="GameManager/CanvasLayer/Control"]
+[node name="CardCost" type="RichTextLabel" parent="GameManager/CanvasLayer/DeckVisuals"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.81
 anchor_top = 0.793
 anchor_right = 0.87
 anchor_bottom = 0.84
-offset_left = -64.0999
-offset_top = 20.7699
-offset_right = -5.81995
-offset_bottom = 49.4999
+offset_left = -132.1
+offset_top = -47.23
+offset_right = -73.8201
+offset_bottom = -18.5
 size_flags_horizontal = 3
 theme = ExtResource("6_e7sx8")
 theme_override_font_sizes/normal_font_size = 32
@@ -630,9 +644,16 @@ base_size = 1.5
 layout_mode = 2
 text = "Restart"
 script = ExtResource("10_djly2")
+next_scene = "res://Scenes/Game/main.tscn"
+
+[node name="MainMenuButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("10_djly2")
 next_scene = "res://Scenes/Menus/single_player_title_screen.tscn"
 
 [node name="QuitButton" type="Button" parent="GameManager/CanvasLayer/GameOverPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Quit"
 script = ExtResource("11_uidoo")
@@ -646,6 +667,7 @@ autostart = true
 
 [connection signal="input_event" from="CardLayer/Deck/Area2D" to="CardLayer/Deck" method="_on_area_2d_input_event"]
 [connection signal="pressed" from="GameManager/CanvasLayer/SettingsButton" to="GameManager/CanvasLayer" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="GameManager/CanvasLayer/TutorialButton" to="GameManager/CanvasLayer" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="GameManager/CanvasLayer/RestartButton" to="GameManager/CanvasLayer" method="_on_restart_button_pressed"]
 [connection signal="timeout" from="GameManager/BuyTankTimer" to="GameManager" method="_on_buy_tank_timer_timeout"]
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

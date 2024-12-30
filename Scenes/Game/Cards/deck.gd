@@ -18,7 +18,7 @@ var card_level: int = 1
 func _ready() -> void:
 	var options_json_string: String = FileAccess.get_file_as_string(card_data_file)
 	card_data = JSON.parse_string(options_json_string)
-	cost_display.text = "[center]%d[/center]" % current_card_cost
+	cost_display.text = "[right]-%d[/right]" % current_card_cost
 	summon_card_to_hand()
 	summon_card_to_hand()
 	summon_card_to_hand()
@@ -30,7 +30,7 @@ func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 			summon_card_to_hand()
 			game_manager.your_gold -= current_card_cost
 			current_card_cost += 4
-			cost_display.text = "[center]%d[/center]" % current_card_cost
+			cost_display.text = "[right]-%d[/right]" % current_card_cost
 		else:
 			AudioManager._play_clip(denied_sound, "SFX")
 

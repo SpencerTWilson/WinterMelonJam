@@ -1,0 +1,237 @@
+[gd_scene load_steps=42 format=3 uid="uid://bemtmsx13q4ft"]
+
+[ext_resource type="Theme" uid="uid://b4aavk7aafjd0" path="res://Assets/Themes/button_theme.tres" id="1_bey18"]
+[ext_resource type="StyleBox" uid="uid://llmr56kqjddq" path="res://Scenes/Menus/menu_background.tres" id="2_8fv1w"]
+[ext_resource type="Script" path="res://Scenes/Menus/button_sounds_2.gd" id="3_4seeo"]
+[ext_resource type="Theme" uid="uid://ch6vnbcb46cct" path="res://Assets/Themes/title_theme.tres" id="4_b528v"]
+[ext_resource type="Script" path="res://addons/BetterRichTextLabels/better_rich_text_label.gd" id="5_jip5b"]
+[ext_resource type="Script" path="res://Scenes/Menus/back_button.gd" id="6_6u82y"]
+[ext_resource type="Texture2D" uid="uid://5bl23pjyyhqx" path="res://Assets/Sprites/line_horizontal.png" id="6_66ke3"]
+[ext_resource type="Script" path="res://Scenes/Menus/tutorial_manager.gd" id="6_r26eu"]
+[ext_resource type="Texture2D" uid="uid://cv8gmpb2o5abb" path="res://Assets/Sprites/KennyBattleTiles/tile_0048.png" id="7_ckv4h"]
+[ext_resource type="Texture2D" uid="uid://c5l0njkmhd8r1" path="res://Assets/Sprites/money/money.tres" id="7_pv7p0"]
+[ext_resource type="Texture2D" uid="uid://cixfih25k1f6d" path="res://Assets/Sprites/line_cross.png" id="8_lxqib"]
+[ext_resource type="Texture2D" uid="uid://dundgvespq1hv" path="res://Assets/Sprites/KennyBattleTiles/tile_0069.png" id="9_ya7op"]
+[ext_resource type="Texture2D" uid="uid://bvtfd3ibowbq" path="res://Assets/Sprites/tool_sword_a.png" id="10_n1kjx"]
+[ext_resource type="Texture2D" uid="uid://b1fcjor51wlpx" path="res://Assets/Sprites/KennyBattleTiles/tile_0161.png" id="11_2ny3p"]
+[ext_resource type="Texture2D" uid="uid://cau3yixo0oc18" path="res://Assets/Sprites/KennyBattleTiles/tile_0143.png" id="12_xjchm"]
+[ext_resource type="Texture2D" uid="uid://c6ur85y4qkc5b" path="res://Assets/Sprites/color_red_empty.png" id="13_sqkh2"]
+[ext_resource type="Texture2D" uid="uid://bacluyhllpbaq" path="res://Assets/Sprites/color_back.png" id="14_peusd"]
+[ext_resource type="Texture2D" uid="uid://b4goe70w08edw" path="res://Assets/Sprites/KennyBattleTiles/tile_0041.png" id="16_ou8xo"]
+[ext_resource type="Texture2D" uid="uid://pf02n5x0p6si" path="res://Assets/Sprites/KennyBattleTiles/tile_0043.png" id="17_0802l"]
+[ext_resource type="Texture2D" uid="uid://dpfs48hbytdvs" path="res://Assets/Sprites/KennyBattleTiles/tile_0016.png" id="18_e1wvp"]
+[ext_resource type="Texture2D" uid="uid://bw2ainhagbk6r" path="res://Assets/Sprites/KennyBattleTiles/tile_0195.png" id="19_hcs10"]
+[ext_resource type="Texture2D" uid="uid://b6aptnv2n4h60" path="res://Assets/Sprites/color_green_empty.png" id="20_eh8p3"]
+[ext_resource type="Texture2D" uid="uid://6o6i1g0hs4ts" path="res://Assets/Sprites/KennyBattleTiles/tile_0107.png" id="20_gqjpm"]
+[ext_resource type="Texture2D" uid="uid://f2hk5jgaa7x6" path="res://Assets/Sprites/KennyBattleTiles/tile_0106.png" id="21_603rg"]
+[ext_resource type="Texture2D" uid="uid://bdre0bp6mefg4" path="res://Assets/Sprites/color_purple_empty.png" id="21_kevwj"]
+[ext_resource type="Texture2D" uid="uid://pem16c1amyd1" path="res://Assets/Sprites/KennyBattleTiles/tile_0101.png" id="22_iues6"]
+[ext_resource type="Texture2D" uid="uid://cwlgn224axvxo" path="res://Assets/Sprites/color_yellow_empty.png" id="22_uwenh"]
+[ext_resource type="Texture2D" uid="uid://c13gbfo4xmfai" path="res://Assets/Sprites/KennyBattleTiles/tile_0099.png" id="23_nqjm4"]
+[ext_resource type="Texture2D" uid="uid://byrorame7ucgt" path="res://Assets/Sprites/KennyBattleTiles/tile_0098.png" id="24_wqbwm"]
+
+[sub_resource type="Gradient" id="Gradient_afatb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.698885)
+colors = PackedColorArray(0.330727, 0.482489, 0.844414, 1, 0.375171, 0.68652, 0.864198, 1, 0.428022, 0.92915, 0.887725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vb2kj"]
+gradient = SubResource("Gradient_afatb")
+
+[sub_resource type="Curve" id="Curve_ahrrm"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_boudq"]
+curve = SubResource("Curve_ahrrm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nowl2"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_boudq")
+color_initial_ramp = SubResource("GradientTexture1D_vb2kj")
+
+[sub_resource type="Gradient" id="Gradient_lwwwy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6awd4"]
+gradient = SubResource("Gradient_lwwwy")
+
+[sub_resource type="Gradient" id="Gradient_j1dfm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375465, 0.695167)
+colors = PackedColorArray(1, 0.370789, 0.366532, 1, 0.89013, 0.429475, 0.64709, 1, 1, 0.806884, 0.933752, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sop25"]
+gradient = SubResource("Gradient_j1dfm")
+
+[sub_resource type="Curve" id="Curve_dg2ek"]
+_data = [Vector2(0, 1), 0.0, 0.206796, 0, 0, Vector2(1, 0), -1.45075, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_skaah"]
+curve = SubResource("Curve_dg2ek")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3igs"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 19.385
+emission_ring_inner_radius = 9.93
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 619.65
+radial_velocity_min = 9.99998
+radial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_skaah")
+color_initial_ramp = SubResource("GradientTexture1D_sop25")
+
+[node name="TutorialScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bey18")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_8fv1w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_right = 0.823
+anchor_bottom = 1.0
+offset_left = 0.095993
+offset_top = 30.0
+offset_right = -0.0960083
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("3_4seeo")
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_b528v")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "
+[wave amp=50.0 freq=5.0 connected=1][center][color=red]Tutorial[/color][/center][/wave]
+
+"
+fit_content = true
+script = ExtResource("5_jip5b")
+base_size = 4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 75
+alignment = 1
+script = ExtResource("6_r26eu")
+images = Array[Texture2D]([ExtResource("7_pv7p0"), ExtResource("7_ckv4h"), ExtResource("9_ya7op"), ExtResource("10_n1kjx"), ExtResource("11_2ny3p"), ExtResource("12_xjchm"), ExtResource("7_pv7p0"), ExtResource("13_sqkh2"), ExtResource("7_pv7p0"), ExtResource("14_peusd"), ExtResource("8_lxqib"), ExtResource("16_ou8xo"), ExtResource("17_0802l"), ExtResource("18_e1wvp"), ExtResource("19_hcs10"), ExtResource("13_sqkh2"), ExtResource("20_eh8p3"), ExtResource("21_kevwj"), ExtResource("22_uwenh"), ExtResource("20_gqjpm"), ExtResource("21_603rg"), ExtResource("22_iues6"), ExtResource("23_nqjm4"), ExtResource("24_wqbwm")])
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("6_66ke3")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+texture = ExtResource("7_ckv4h")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- Sed non magna sit amet velit varius mattis.
+- Praesent et dolor quis dolor congue facilisis.
+- In vel orci tristique, laoreet augue a, vehicula nunc.
+[/center]"
+fit_content = true
+script = ExtResource("5_jip5b")
+use_height = true
+base_size = 3.0
+
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("8_lxqib")
+
+[node name="BackButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("settings_node")]
+layout_mode = 2
+text = "Back"
+script = ExtResource("6_6u82y")
+settings_node = NodePath("../..")
+
+[node name="Blue1" type="GPUParticles2D" parent="."]
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_nowl2")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Blue2" type="GPUParticles2D" parent="."]
+position = Vector2(0, 648)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_nowl2")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Red1" type="GPUParticles2D" parent="."]
+position = Vector2(1152, 0)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_p3igs")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[node name="Red2" type="GPUParticles2D" parent="."]
+position = Vector2(1152, 648)
+amount = 150
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_p3igs")
+texture = SubResource("GradientTexture2D_6awd4")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="VBoxContainer" method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="VBoxContainer/HBoxContainer" method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="VBoxContainer" method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="VBoxContainer/HBoxContainer" method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="VBoxContainer" method="_on_back_button_pressed"]

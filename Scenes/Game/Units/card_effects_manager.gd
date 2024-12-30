@@ -11,15 +11,15 @@ func _card_dropped(card: Card, _from_deck: bool):
 		match type:
 			"heal":
 				$Plus.emitting = true
-				unit.cur_health += 10
+				unit.cur_health += unit.max_health
 			"buff":
 				$Buff.emitting = true
 				unit.attack_dmg += 5
 			"dmg":
 				$Minus.emitting = true
-				unit._damage(10)
+				unit._damage(unit.cur_health)
 			"spd":
 				$Spd.emitting = true
-				unit.movement_speed += 15
+				unit.movement_speed += unit.movement_speed
 	card_slot._remove_card(card)
 	card.queue_free()
