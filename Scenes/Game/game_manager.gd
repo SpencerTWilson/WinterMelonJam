@@ -39,12 +39,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#Text
-	blue_gold_display.text = "%d" % blue_team_gold
-	red_gold_display.text = "[right]%d[/right]" % red_team_gold
-	your_gold_display.text = "%d" % your_gold
+	blue_gold_display.text = "\n %d\n" % blue_team_gold
+	red_gold_display.text = "\n[right]%d [/right]\n" % red_team_gold
+	your_gold_display.text = "\n %d\n" % your_gold
 	
-	$CanvasLayer/CoinDisplays2/BlueLvl.text = "LVL: %d" % blue_base_lvl
-	$CanvasLayer/CoinDisplays2/RedLvl.text = "[right]LVL: %d[/right]" % red_base_lvl
+	$CanvasLayer/CoinDisplays2/BlueLvl.text = "\n LVL: %d\n" % blue_base_lvl
+	$CanvasLayer/CoinDisplays2/RedLvl.text = "\n[right]LVL: %d [/right]\n" % red_base_lvl
+	
+	$CanvasLayer/ScoreDisplay.text = "\n[wave amp=50.0 freq=5.0 connected=1][center]%d[/center][/wave]\n" % score
 	
 	#Calc Team Fight Winning status
 	var furethest_blue_unit = get_furthest_troop(blue_team_spawn_manager)
