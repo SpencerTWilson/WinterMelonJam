@@ -472,6 +472,7 @@ layout_mode = 2
 [node name="YourCoins" type="RichTextLabel" parent="GameManager/CanvasLayer/YourCoins"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 fit_content = true

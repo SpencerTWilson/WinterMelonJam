@@ -9,7 +9,7 @@ extends Node2D
 @export_file("*.json") var card_data_file: String
 var card_data: Dictionary
 
-var current_card_cost: int = 4
+@export var current_card_cost: int = 6
 var card_level: int = 1
 
 @export var denied_sound: AudioStream
