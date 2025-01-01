@@ -180,7 +180,7 @@ stretch_mode = 4
 [node name="Description" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 29
 bbcode_enabled = true
 text = "[center]
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.

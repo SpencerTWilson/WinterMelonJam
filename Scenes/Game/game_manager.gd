@@ -97,13 +97,13 @@ func _on_buy_tank_timer_timeout() -> void:
 		$CanvasLayer/BlueUnitUnlocks._update()
 		
 	#if we didn't buy a unit consider spawn speed increase
-	if !blue_bought_flag and blue_team_gold >= blue_spawn_speed_upgrade_cost:
+	if !blue_bought_flag and blue_team_gold >= blue_spawn_speed_upgrade_cost and blue_base_lvl < 20:
 		blue_team_gold -= blue_spawn_speed_upgrade_cost
 		blue_spawn_speed_upgrade_cost += upgrade_cost_increase
 		blue_team_spawn_manager.spawn_rate *= .9
 		blue_base_lvl += 1
 		AudioManager._play_clip(buy_audio,"SFX")
-	if !red_bought_flag and red_team_gold >= red_spawn_speed_upgrade_cost:
+	if !red_bought_flag and red_team_gold >= red_spawn_speed_upgrade_cost and red_base_lvl < 20:
 		red_team_gold -= red_spawn_speed_upgrade_cost
 		red_spawn_speed_upgrade_cost += upgrade_cost_increase
 		red_team_spawn_manager.spawn_rate *= .9
